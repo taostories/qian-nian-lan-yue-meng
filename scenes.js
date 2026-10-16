@@ -3,7 +3,15 @@
  const canvas=document.getElementById('world'),ctx=canvas.getContext('2d');
  let W=0,H=0,scene='cover',animation='',start=0,landing=0,frozen=false,lastFrame=0;
  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
- const images={},background=document.createElement('canvas'),bg=background.getContext('2d');
+ const images={},loading={},background=document.createElement('canvas'),bg=background.getContext('2d');
+ function paintBackground(){ctx.clearRect(0,0,W,H);ctx.drawImage(background,0,0,W,H)}
+ function loadArtwork(key){
+  if(images[key]||loading[key]||!window.ARTWORK[key])return;
+  const im=new Image();loading[key]=im;im.fetchPriority='high';let attempt=0,timer;
+  const retry=()=>{clearTimeout(timer);if(attempt++<2){im.src=window.ARTWORK[key].split('?')[0]+'?retry='+attempt;timer=setTimeout(retry,15000)}else{im.onload=im.onerror=null;delete loading[key]}};
+  im.onload=()=>{clearTimeout(timer);images[key]=im;delete loading[key];if(scene===key){build();dispatchEvent(new Event('sceneartload'))}};
+  im.onerror=retry;im.src=window.ARTWORK[key];timer=setTimeout(retry,15000);
+ }
  let rng=1;
  function random(){rng=(Math.imul(rng,1664525)+1013904223)>>>0;return rng/4294967296}
  function path(c,points,fill,stroke){c.beginPath();points.forEach((p,i)=>i?c.lineTo(p[0],p[1]):c.moveTo(p[0],p[1]));if(fill){c.closePath();c.fillStyle=fill;c.fill()}if(stroke){c.strokeStyle=stroke;c.stroke()}}
@@ -102,6 +110,8 @@
    const shade=bg.createLinearGradient(0,0,W,0);shade.addColorStop(0,'rgba(12,7,30,.56)');shade.addColorStop(.43,'rgba(12,7,30,.3)');shade.addColorStop(.72,'rgba(12,7,30,0)');bg.fillStyle=shade;bg.fillRect(0,0,W,H);
    if(W<800){let g=bg.createLinearGradient(0,0,0,H);g.addColorStop(0,'rgba(14,9,32,0)');g.addColorStop(.42,'rgba(14,9,32,.15)');g.addColorStop(.65,'rgba(14,9,32,.85)');g.addColorStop(1,'rgba(14,9,32,.95)');bg.fillStyle=g;bg.fillRect(0,0,W,H)}
   }
+  canvas.dataset.scene=scene;canvas.dataset.artwork=images[scene]?'loaded':'loading';
+  paintBackground();
  }
  function draw(t){
   requestAnimationFrame(draw);if(t-lastFrame<33)return;lastFrame=t;
@@ -124,8 +134,8 @@
   }
  }
  function resize(){W=innerWidth;H=innerHeight;canvas.width=Math.round(W*devicePixelRatio);canvas.height=Math.round(H*devicePixelRatio);ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);build();dispatchEvent(new Event('sceneartload'))}
- window.World={set(next,anim=''){const changed=next!==scene;scene=next;animation=anim;start=performance.now();frozen=false;if(changed)build()},landing(p){landing=p},freeze(){frozen=true},anchor(){if(!images[scene])return {x:W*(W<800?.78:.77),y:H*(H<=600&&W>520?.30:W<800?.34:.54)};const im=images[scene],s=Math.max(W/im.width,H/im.height),left=(W-im.width*s)*(W<800?(scene==='finale'?.67:.77):.5);return{x:left+im.width*s*(scene==='finale'?.67:.77),y:(H-im.height*s)/2+im.height*s*.54}},get scene(){return scene}};
+ window.World={set(next,anim=''){const changed=next!==scene;scene=next;animation=anim;start=performance.now();frozen=false;loadArtwork(scene);if(changed)build()},landing(p){landing=p},freeze(){frozen=true},anchor(){if(!images[scene])return {x:W*(W<800?.78:.77),y:H*(H<=600&&W>520?.30:W<800?.34:.54)};const im=images[scene],s=Math.max(W/im.width,H/im.height),left=(W-im.width*s)*(W<800?(scene==='finale'?.67:.77):.5);return{x:left+im.width*s*(scene==='finale'?.67:.77),y:(H-im.height*s)/2+im.height*s*.54}},get scene(){return scene}};
  // file:// works too; absent artwork simply falls back to the procedural scene.
- Object.entries(window.ARTWORK).forEach(([key,url])=>{const im=new Image();im.onload=()=>{images[key]=im;if(scene===key){build();dispatchEvent(new Event('sceneartload'))}};im.onerror=()=>{};im.src=url});
+ loadArtwork(scene);
  addEventListener('resize',resize);resize();requestAnimationFrame(draw);
 })();
