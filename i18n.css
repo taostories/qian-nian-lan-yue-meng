@@ -1,0 +1,27 @@
+.language-button{flex:none;min-height:40px;min-width:72px;padding:8px 12px;border:1px solid #b6a4ee50;border-radius:20px;background:#16152b80;color:#d8d6ef;font:14px/1.3 system-ui,sans-serif;letter-spacing:0;cursor:pointer}
+.language-button:hover{background:#35304c;color:#fff}
+.header-right{gap:16px}.header-right .icon-button{flex:none}
+html[lang=en] :is(.header-right,.speaker,.primary,.next,.eyebrow,.chapter-heading h2,.task-panel>h2,.ending-reveal h2,.ending-reveal .primary,.home .primary){letter-spacing:.02em}
+html[lang=en] :is(.narrative,.end-line){font-family:Georgia,'Times New Roman',serif;letter-spacing:0}
+html[lang=en] .dialogue-panel .narrative{font-size:20px;line-height:1.55;overflow-wrap:break-word}
+html[lang=en] .chapter-heading h2{line-height:1.3}
+html[lang=en] .dialogue-panel .next{gap:14px}
+html[lang=en] #pads text{font-size:18px!important;letter-spacing:1px!important}
+html[lang=en] .mission .sample-cell-label{font-size:11px;max-width:100%;letter-spacing:0}
+html[lang=en] .mission .circuit-label{letter-spacing:.03em}
+html[lang=en] .mission .controls{flex-wrap:wrap}
+html[lang=en] .ending-reveal .end-line{font-size:clamp(17px,1.8vw,22px)}
+html[lang=en] .ending-reveal .actions{gap:18px}
+.credits-language{display:flex;justify-content:flex-end;margin-bottom:18px}
+@media(max-width:1000px){html[lang=en] #chapter-label{display:none}}
+@media(max-width:520px){
+ .header-right{gap:8px}header{gap:8px}.brand{gap:7px;font-size:14px;letter-spacing:.1em}.brand-moon{width:20px;height:20px;flex:none}
+ .language-button{min-width:66px;padding:8px 9px}
+ html[lang=en] .dialogue-panel .narrative{font-size:17px;line-height:1.5}
+ html[lang=en] .chapter-heading h2{font-size:22px}
+ html[lang=en] .task-panel>h2{font-size:22px;line-height:1.35}
+ html[lang=en] .dialogue-panel .story-actions{gap:10px}
+ html[lang=en] .dialogue-panel .next{gap:10px;padding-left:12px;padding-right:12px}
+ html[lang=en] .mission .sample-cell-label{font-size:9px}
+ html[lang=en] .ending-reveal .end-line{line-height:1.6}
+}
