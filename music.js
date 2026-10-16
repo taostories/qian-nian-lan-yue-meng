@@ -59,7 +59,7 @@
   else if(enabled)playWanted();
  });
  window.MoonMusic={
-  setScene(scene){const next=scene==='epilogue'?'immersed':'soaring';if(next===wanted)return;wanted=next;if(enabled)playWanted()},
+  setScene(scene,readingLetter=false){const next=readingLetter||scene==='epilogue'?'immersed':'soaring';if(next===wanted)return;wanted=next;if(enabled)playWanted()},
   tone(f){if(!enabled||!context||context.state!=='running')return;const o=context.createOscillator(),g=context.createGain();o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(0,context.currentTime);g.gain.linearRampToValueAtTime(.1,context.currentTime+.02);g.gain.exponentialRampToValueAtTime(.001,context.currentTime+.8);o.connect(g);g.connect(effects);o.onended=()=>{o.disconnect();g.disconnect()};o.start();o.stop(context.currentTime+.85)},
   get state(){return {enabled,wanted,active,playing:Object.entries(tracks).filter(([,t])=>!t.paused).map(([n])=>n)}}
  };
