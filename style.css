@@ -117,3 +117,5 @@ button .journey-moon{pointer-events:none;vertical-align:middle}
  /* Chang'e fits the half-width slot; align the operator with her actual image top. */
  .meeting-portraits .character-operator{transform:translateY(max(0px,calc(100% - 55.1724vw))) scale(1.23)}
 }
+
+.music-credit-link{font-size:14px;letter-spacing:.05em;color:#c1cce3}.app:not([data-mode=home]):not([data-mode=ending]) .music-credit-link{display:none}

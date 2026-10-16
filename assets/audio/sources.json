@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Soaring",
+    "source": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Soaring.mp3",
+    "originalBytes": 12163985,
+    "originalSha256": "64a48cda484b0f341dd3dae42994c54c54ab142dad75cce0fb9c5b224d10692c",
+    "webFile": "soaring.mp3",
+    "webBytes": 4561447,
+    "webSha256": "0ee78ffbffc746bacbc3896e61950f6f71bc463ed41767d7604acc83efed2d11",
+    "changes": "Transcoded to 96 kbps MP3; game applies volume, looping and crossfade."
+  },
+  {
+    "title": "Immersed",
+    "source": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Immersed.mp3",
+    "originalBytes": 7969389,
+    "originalSha256": "870fa4f642816b2207cf74e48c36cbbbd147df99be24f08f29aa26ac0597a44b",
+    "webFile": "immersed.mp3",
+    "webBytes": 2988458,
+    "webSha256": "dc867b8b136415560794afcf5decec062396908f7d1f492f23c1418218115fb6",
+    "changes": "Transcoded to 96 kbps MP3; game applies volume, looping and crossfade."
+  }
+]
