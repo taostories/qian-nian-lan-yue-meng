@@ -33,7 +33,7 @@ body .app{position:relative;z-index:1}
 
 /* 首页只保留主标题、旅程按钮与声音开关。 */
 .home-title{width:min(900px,76vw);max-width:100%;line-height:0;margin:0 auto 34px}
-.home-title img{display:block;width:100%;height:auto;filter:drop-shadow(0 2px 0 #52608080) drop-shadow(0 5px 7px #0b173c66) drop-shadow(0 0 5px #fff0c83d) drop-shadow(0 0 18px #c9daff38)}
+.home-title img,.ending-title img{display:block;width:100%;height:auto;filter:drop-shadow(0 2px 0 #52608080) drop-shadow(0 5px 7px #0b173c66) drop-shadow(0 0 5px #fff0c83d) drop-shadow(0 0 18px #c9daff38)}
 .app[data-mode=home] main{min-height:0;align-items:center}
 .home .actions{justify-content:center}
 .home #start{min-width:206px;gap:24px;padding:14px 28px;background:linear-gradient(110deg,#182943a6,#29375170);border:1px solid #c6d2ef70;border-radius:3px;color:#d6dff3;font-family:"Songti SC","STSong","SimSun",serif;letter-spacing:.18em;text-shadow:0 1px 5px #101c36;box-shadow:inset 0 1px 0 #e0e8ff12,0 4px 20px #08152930;transition:background .25s,border-color .25s,box-shadow .25s}
@@ -91,16 +91,19 @@ body .app{position:relative;z-index:1}
 .app[data-mode=ending] #chapter-label,.app[data-mode=ending] footer,.app[data-mode=ending] .brand{display:none}
 .app[data-mode=ending] header{justify-content:flex-end}
 .app[data-mode=ending] .ending-reveal{width:min(900px,100%);margin:auto auto 6vh;padding:0 12px;background:none;border:0;border-radius:0;box-shadow:none;text-align:center;text-shadow:0 2px 8px #080c21,0 0 28px #080c21}
-.ending-reveal h2{font-size:clamp(30px,4vw,52px);letter-spacing:.12em;margin:0 0 22px;animation:ending-emerge 2.4s ease-out .3s both}
+.ending-reveal .ending-title{position:fixed;top:20svh;left:0;right:0;width:min(640px,70vw,56svh);line-height:0;margin:0 auto;animation:ending-emerge 2.4s ease-out .3s both}
+.ending-reveal h2{font-size:clamp(24px,2.5vw,32px);letter-spacing:.12em;margin:0 0 18px;animation:ending-emerge 2.4s ease-out 1.8s both}
 .ending-reveal .end-line{font-size:clamp(18px,2vw,23px);line-height:1.9;margin:0 0 30px}
-.ending-reveal .end-line span{display:block;animation:ending-emerge 2.4s ease-out 1.8s both}
-.ending-reveal .end-line span+span{animation-delay:3s}
-.ending-reveal .actions{justify-content:center;gap:24px;animation:ending-emerge 1.8s ease-out 4.6s both}
+.ending-reveal .end-line span{display:block;animation:ending-emerge 2.4s ease-out 3s both}
+.ending-reveal .end-line span+span{animation-delay:4.2s}
+.ending-reveal .actions{justify-content:center;gap:24px;animation:ending-emerge 1.8s ease-out 5.6s both}
 .ending-reveal .primary{background:#15112b80;border-color:#d2c4f17a;color:#f0eaff;font-size:16px;min-height:46px;padding:11px 20px;gap:18px;letter-spacing:.06em;text-shadow:0 1px 5px #080c21}
 .ending-reveal .text-button{color:#e3d9f4;text-shadow:0 1px 5px #080c21}
 @keyframes ending-emerge{from{opacity:0;transform:translateY(10px);visibility:hidden}to{opacity:1;transform:translateY(0);visibility:visible}}
-@media(max-width:520px){.app[data-mode=ending] .ending-reveal{margin-bottom:max(38px,env(safe-area-inset-bottom));padding:0 4px}.ending-reveal h2{font-size:30px;letter-spacing:.06em}.ending-reveal .end-line{font-size:18px}.ending-reveal .actions{gap:18px}}
-@media(prefers-reduced-motion:reduce){.ending-reveal h2,.ending-reveal .end-line span,.ending-reveal .actions{opacity:1;transform:none;visibility:visible}}
+@media(max-width:520px){.app[data-mode=ending] .ending-reveal{margin-bottom:max(38px,env(safe-area-inset-bottom));padding:0 4px}.ending-reveal h2{font-size:24px;letter-spacing:.06em}.ending-reveal .end-line{font-size:18px}.ending-reveal .actions{gap:18px}}
+@media(max-aspect-ratio:4/5){.ending-reveal .ending-title{top:28vw;width:90vw;max-width:640px}}
+@media(max-height:600px) and (min-width:521px){.ending-reveal h2{margin-bottom:8px}.ending-reveal .end-line{font-size:18px;margin-bottom:14px}}
+@media(prefers-reduced-motion:reduce){.ending-reveal .ending-title,.ending-reveal h2,.ending-reveal .end-line span,.ending-reveal .actions{opacity:1;transform:none;visibility:visible}}
 
 /* Keep the larger operator's head at the original height; crop the lower body at the dialogue. */
 .character-operator{transform:scale(1.28);transform-origin:left top;clip-path:inset(0 0 21.875% 0)}
