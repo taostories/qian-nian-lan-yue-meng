@@ -25,7 +25,7 @@
  }
  function preloadArtwork(){
   if(preloadStarted)return;preloadStarted=true;
-  const taskArt={orbit:['orbit-console.webp','orbit-radar.webp','orbit-wave.webp'],signal:['signal-console.webp'],landing:['lander.webp'],sample:['sample-surface.webp'],upload:['circuit-panel.webp']};
+  const taskArt={orbit:['orbit-console.webp','orbit-radar.webp','orbit-wave.webp'],signal:['signal-console.webp'],landing:['landing-background.webp','lander.webp'],sample:['sample-surface.webp'],upload:['circuit-panel.webp']};
   const backgrounds=[],details=[],seen=new Set();
   function add(src,key){if(!src||seen.has(src))return;seen.add(src);(key?backgrounds:details).push(()=>key?loadArtwork(key,'low'):loadImage(src))}
   // Story order warms nearby scenes, portraits and game art first. Two low-priority
