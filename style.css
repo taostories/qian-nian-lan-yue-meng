@@ -41,6 +41,11 @@ body .app{position:relative;z-index:1}
 .home #start:hover:not(:disabled){background:linear-gradient(165deg,#7a8eaaa0,#3d5276bb 48%,#535273a0);border-color:#d7e1f8b0;box-shadow:inset 0 1px 0 #e0e8ff55,inset 0 -2px 3px #0a163e44,0 3px 0 #17243f80,0 8px 22px #08152960;transform:none}
 .home #start:active:not(:disabled){box-shadow:inset 0 2px 5px #0a163e66,0 2px 10px #08152940}
 .journey-moon{width:22px;height:22px;flex:none;fill:#c3cee82b;stroke:#d1dbef;stroke-width:1.25;stroke-linejoin:round}
+button .journey-moon{pointer-events:none;vertical-align:middle}
+.mission #aim-right,.mission #flight-right{display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.mission #flight-right{padding:8px 4px;gap:2px;font-size:14px}
+.mission #flight-right .journey-moon{width:18px;height:18px}
+.replay-next{align-items:center;gap:12px}
 .home #restart{color:#c1cce3;font-family:"Songti SC","STSong","SimSun",serif}
 @media(max-width:800px){.home{padding:0 0 28px}.home-title{width:100%;margin-bottom:30px}}
 @media(max-height:520px) and (min-width:521px){.app[data-mode=home] header{height:60px}.home-title{width:min(68vw,110svh);margin-bottom:18px}}

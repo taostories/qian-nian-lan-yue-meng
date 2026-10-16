@@ -1,5 +1,6 @@
 (() => {
  'use strict';
+ const MOON_ICON='<svg class="journey-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.8 3.6A9 9 0 1 0 20.4 17 8.2 8.2 0 0 1 16.8 3.6Z"/></svg>';
  const $=s=>document.querySelector(s),main=$('#content'),app=$('.app');
  const SAVE='moon-dream-v1',nums=['一','二','三','四'];
  let saved=null,index=0,mission={zone:0},completed=new Set(),cleanup=()=>{},view='home',audioCtx=null,master=null,soundOn=false;
@@ -29,11 +30,11 @@
   const portrait=step.meeting?`<div class="meeting-portraits">${portraitImages}</div>`:portraitImages;
   const title=`<div class="chapter-heading"><p class="eyebrow">第${nums[step.chapter]}章</p><h2>${CHAPTERS[step.chapter]}</h2></div>`;
   if(step.task){main.innerHTML=`${title}<section class="task-panel">${step.task==='signal'?'':`<div class="speaker">${step.task==='finale'?'终章':'主控 · 任务'}</div>`}<h2>${step.title}</h2><div class="interaction" id="interaction"></div><button class="back task-back" id="back">← 上一段</button></section>`;$('#back').onclick=()=>{index--;render()};mountTask(step);return}
-  main.innerHTML=`${title}<div class="dialogue-stack${step.chapter===3?' chapter-four-dialogue':''}">${portrait}<section class="dialogue-panel" aria-label="剧情对话">${step.speaker||step.chapter===3?`<div class="speaker">${step.speaker||''}</div>`:''}<p class="narrative" tabindex="-1">${step.text}</p><div class="story-actions"><button class="back" id="back" ${index===0?'disabled':''}>← 上一段</button><button class="next" id="next">${STORY[index+1]?.ending?'收起故事':STORY[index+1]?.task?'开始操作':'继续'}<span class="arrow" aria-hidden="true">→</span></button></div></section></div>`;
+  main.innerHTML=`${title}<div class="dialogue-stack${step.chapter===3?' chapter-four-dialogue':''}">${portrait}<section class="dialogue-panel" aria-label="剧情对话">${step.speaker||step.chapter===3?`<div class="speaker">${step.speaker||''}</div>`:''}<p class="narrative" tabindex="-1">${step.text}</p><div class="story-actions"><button class="back" id="back" ${index===0?'disabled':''}>← 上一段</button><button class="next" id="next">${STORY[index+1]?.ending?'收起故事':STORY[index+1]?.task?'开始操作':'继续'}<svg class="journey-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.8 3.6A9 9 0 1 0 20.4 17 8.2 8.2 0 0 1 16.8 3.6Z"/></svg></button></div></section></div>`;
   $('#back').onclick=()=>{if(index>0){index--;render()}};$('#next').onclick=advance;
  }
  function status(text){$('#task-status').textContent=text}
- function complete(text,button='继续故事'){completed.add(index);save();if(['sample','signal'].includes(STORY[index].task)){tone(523.25);advance();return}status(text);$('#interaction').querySelectorAll('input,button').forEach(el=>el.disabled=true);const next=document.createElement('button');next.className='primary';next.id='task-next';next.textContent=button+'  →';next.onclick=advance;const reset=STORY[index].task==='orbit'?$('#radar-reset'):null;if(reset)reset.replaceWith(next);else $('#interaction').appendChild(next);tone(523.25);}
+ function complete(text,button='继续故事'){completed.add(index);save();if(['sample','signal'].includes(STORY[index].task)){tone(523.25);advance();return}status(text);$('#interaction').querySelectorAll('input,button').forEach(el=>el.disabled=true);const next=document.createElement('button');next.className='primary';next.id='task-next';next.textContent=button;next.insertAdjacentHTML('beforeend',MOON_ICON);next.onclick=advance;const reset=STORY[index].task==='orbit'?$('#radar-reset'):null;if(reset)reset.replaceWith(next);else $('#interaction').appendChild(next);tone(523.25);}
  function mountTask(step){
   const root=$('#interaction'),done=completed.has(index);
   if(step.task!=='finale'){
@@ -45,9 +46,9 @@
    probe.onclick=()=>{probe.disabled=true;World.set('finale','complete');completed.add(index);save();status('回信写好了。翻回故事的第一页。');timer=setTimeout(advance,1800)};
   }
   // Completed interactions remain replayable; continuation is available on revisit.
-  if(done&&step.task!=='finale'){const skip=document.createElement('button');skip.className='text-button replay-next';skip.textContent='已完成 · 继续故事 →';skip.onclick=advance;root.appendChild(skip)}
+  if(done&&step.task!=='finale'){const skip=document.createElement('button');skip.className='text-button replay-next';skip.textContent='已完成 · 继续故事';skip.insertAdjacentHTML('beforeend',MOON_ICON);skip.onclick=advance;root.appendChild(skip)}
  }
- function ending(){enter('ending');completed.add(index);save();World.set(STORY[index].scene);World.freeze();footer(3);main.innerHTML='<section class="ending ending-reveal" aria-label="故事结尾"><h1 class="ending-title"><img src="assets/ui/title-calligraphy.webp?v=warm-moon-20261016" alt="千年揽月梦" width="2095" height="874" draggable="false"></h1><h2>故事，仍在继续。</h2><p class="end-line"><span>把古老的向往，走成今天的路。</span><span>下一次仰望，也许就从你开始。</span></p><div class="actions"><button class="primary" id="home">返回主页面<span class="arrow" aria-hidden="true">→</span></button><button class="text-button" id="replay">再赴星河</button></div></section>';$('#replay').onclick=restart;$('#home').onclick=home}
+ function ending(){enter('ending');completed.add(index);save();World.set(STORY[index].scene);World.freeze();footer(3);main.innerHTML='<section class="ending ending-reveal" aria-label="故事结尾"><h1 class="ending-title"><img src="assets/ui/title-calligraphy.webp?v=warm-moon-20261016" alt="千年揽月梦" width="2095" height="874" draggable="false"></h1><h2>故事，仍在继续。</h2><p class="end-line"><span>把古老的向往，走成今天的路。</span><span>下一次仰望，也许就从你开始。</span></p><div class="actions"><button class="primary" id="home">返回主页面<svg class="journey-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.8 3.6A9 9 0 1 0 20.4 17 8.2 8.2 0 0 1 16.8 3.6Z"/></svg></button><button class="text-button" id="replay">再赴星河</button></div></section>';$('#replay').onclick=restart;$('#home').onclick=home}
  function tone(f){if(!soundOn||!audioCtx)return;const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(0,audioCtx.currentTime);g.gain.linearRampToValueAtTime(.10,audioCtx.currentTime+.02);g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+.8);o.connect(g);g.connect(master);o.start();o.stop(audioCtx.currentTime+.85)}
  $('#sound').onclick=async()=>{
   try{
