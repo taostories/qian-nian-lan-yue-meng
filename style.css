@@ -49,3 +49,6 @@
 .character-operator{height:470px;width:300px;margin-left:12px;margin-right:auto;object-position:left bottom}
 @media(max-width:520px){.character-portrait{height:280px;width:235px;margin-right:4px}.character-operator{height:280px;width:190px;margin-left:4px;margin-right:auto}}
 @media(max-height:600px) and (min-width:521px){.character-portrait{height:230px;width:200px}.character-operator{height:230px;width:150px}}
+
+/* 嫦娥以月光虚影陪伴现代段落；保持五官清楚，仅淡化轮廓与衣摆。 */
+.character-apparition{opacity:.76;filter:drop-shadow(0 0 14px #c8c2ff70);-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 68%,#000b 86%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0%,#000 68%,#000b 86%,transparent 100%)}

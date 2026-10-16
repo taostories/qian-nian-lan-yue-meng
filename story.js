@@ -1,9 +1,9 @@
 /* 六张整屏原画的唯一入口。将对应 JPG 放入 assets 即可自动替换程序场景。 */
 window.ARTWORK = {
-  cover:'assets/00-cover.jpg', ancient:'assets/01-ancient.jpg', palace:'assets/02-palace.jpg', palaceEmpty:'assets/02-palace-empty.jpg', control:'assets/03-control.jpg',
-  cosmos:'assets/04-cosmos.jpg', surface:'assets/05-surface.jpg', finale:'assets/06-finale.jpg'
+  cover:'assets/00-cover.jpg?v=portraits-restored-20261016', ancient:'assets/01-ancient.jpg?v=portraits-restored-20261016', palace:'assets/02-palace.jpg?v=portraits-restored-20261016', palaceEmpty:'assets/02-palace-empty.jpg?v=portraits-restored-20261016', control:'assets/03-control.jpg?v=portraits-restored-20261016',
+  cosmos:'assets/04-cosmos.jpg?v=portraits-restored-20261016', surface:'assets/05-surface.jpg?v=portraits-restored-20261016', finale:'assets/06-finale.jpg?v=portraits-restored-20261016'
 };
-window.CHARACTERS = {operator:'assets/characters/operator.png',change:'assets/characters/change.png'};
+window.CHARACTERS = {operator:'assets/characters/operator.png?v=portraits-restored-20261016',change:'assets/characters/change.png?v=portraits-restored-20261016'};
 window.CHAPTERS = ['月下的故事','地面的守候','走近真实的月亮','写给人间的回信'];
 window.LOCATIONS = {cover:'九州山河 · 月出之时',ancient:'九州山河 · 月出之时',palace:'广寒月宫 · 千载守望',palaceEmpty:'广寒月宫 · 千载守望',control:'华夏测控站 · 地月之间',cosmos:'宇宙深空 · 星河赴约',surface:'月球表面 · 今夕归期',finale:'星月同辉 · 千年梦圆'};
 // 稳定剧情 ID 用于跨版本存档；旧版本索引只在迁移时读取。
@@ -39,7 +39,8 @@ window.STORY = [
     "scene": "palaceEmpty",
     "speaker": "嫦娥",
     "text": "我记得人间的夜晚。门前有灯，有人唤晚归的孩子回家。\n如今，那些灯还亮着吗？",
-    "portrait": "change"
+    "portrait": "change",
+    "portraitStyle": "solid"
   },
   {
     "id": "ancient-vow",
@@ -47,7 +48,8 @@ window.STORY = [
     "scene": "palaceEmpty",
     "speaker": "嫦娥",
     "text": "若有一天，有人能走过这片星河，\n请替我带来人间的消息。",
-    "portrait": "change"
+    "portrait": "change",
+    "portraitStyle": "solid"
   },
   {
     "id": "broken-question",
@@ -55,7 +57,8 @@ window.STORY = [
     "scene": "palaceEmpty",
     "speaker": "嫦娥",
     "text": "若你能来到这里，告诉我吧——\n后来的孩子，还会抬头看月亮吗？",
-    "portrait": "change"
+    "portrait": "change",
+    "portraitStyle": "solid"
   },
   {
     "id": "ancient-wait",
@@ -143,7 +146,8 @@ window.STORY = [
     "scene": "control",
     "speaker": "嫦娥的声音",
     "text": "后来的孩子，还会抬头看月亮吗？",
-    "portrait": null
+    "portrait": "change",
+    "portraitStyle": "apparition"
   },
   {
     "id": "children-answer",
@@ -159,7 +163,8 @@ window.STORY = [
     "scene": "control",
     "speaker": "嫦娥的声音",
     "text": "那你愿意告诉我，今天的人间是什么模样吗？",
-    "portrait": null
+    "portrait": "change",
+    "portraitStyle": "apparition"
   },
   {
     "id": "promise",
@@ -191,7 +196,8 @@ window.STORY = [
     "scene": "cosmos",
     "speaker": "嫦娥的声音",
     "text": "故事里的远方，如今正在一点点靠近。",
-    "portrait": null
+    "portrait": "change",
+    "portraitStyle": "apparition"
   },
   {
     "id": "many-hands",
@@ -199,7 +205,7 @@ window.STORY = [
     "scene": "cosmos",
     "speaker": "地面测控",
     "text": "这艘小小的船，经过了很多人的手。有人反复试验一处接头，有人核对一组数据。\n我在地面接过的，是他们一起铺好的路。",
-    "portrait": null
+    "portrait": "operator"
   },
   {
     "id": "exploration-steps",
@@ -207,7 +213,7 @@ window.STORY = [
     "scene": "cosmos",
     "speaker": "地面测控",
     "text": "从环绕观察，到落上月面，再到带回样本，中国探月的路一步步向前。\n而眼前这次任务，要先完成安全着陆。",
-    "portrait": null
+    "portrait": "operator"
   },
   {
     "id": "descent-warning",
@@ -215,7 +221,7 @@ window.STORY = [
     "scene": "cosmos",
     "speaker": "地面测控",
     "text": "探测器进入下降阶段。按预定方案对准平坦落区，控制下降速度。\n地面收到的每一次变化，都要仔细确认。",
-    "portrait": null
+    "portrait": "operator"
   },
   {
     "id": "landing",
@@ -231,7 +237,7 @@ window.STORY = [
     "scene": "surface",
     "speaker": "地面测控",
     "text": "地面收到着陆确认：接触月面，姿态稳定。\n探测器到了。",
-    "portrait": null
+    "portrait": "operator"
   },
   {
     "id": "paved-road",
@@ -247,7 +253,7 @@ window.STORY = [
     "scene": "surface",
     "speaker": "地面测控",
     "text": "相机影像已收到。检查设备，再记录周围地形。\n抵达只是开始，我们还有许多事要弄明白。",
-    "portrait": null
+    "portrait": "operator"
   },
   {
     "id": "sampling-reason",
@@ -255,7 +261,7 @@ window.STORY = [
     "scene": "surface",
     "speaker": "地面测控",
     "text": "接下来规划采样作业。每份样本都要对应位置与影像，后续研究才能找到依据。\n先在作业图上避开陨坑，再执行采集。",
-    "portrait": null
+    "portrait": "operator"
   },
   {
     "id": "sample",
@@ -271,7 +277,7 @@ window.STORY = [
     "scene": "surface",
     "speaker": "地面测控",
     "text": "三处样本已封存，位置和影像一一对应。\n它们尚未回到地球，后续转运与研究还需要这些记录。",
-    "portrait": null
+    "portrait": "operator"
   },
   {
     "id": "moon-has-history",
@@ -303,7 +309,7 @@ window.STORY = [
     "scene": "surface",
     "speaker": "地面测控",
     "text": "异常位置确认。恢复连接后，再核对数据是否完整。\n要交给下一班的，不能只是一句“应该没问题”。",
-    "portrait": null
+    "portrait": "operator"
   },
   {
     "id": "upload",
@@ -319,7 +325,7 @@ window.STORY = [
     "scene": "surface",
     "speaker": "地面测控",
     "text": "任务数据接收完整。位置、影像、样本记录，核对一致。\n可以交接了。那封留在手记里的回信，也终于能写完。",
-    "portrait": null
+    "portrait": "operator"
   },
   {
     "id": "so-many-lights",
@@ -335,7 +341,7 @@ window.STORY = [
     "scene": "finale",
     "speaker": "你",
     "text": "那些灯下，有等人回家的窗，也有工厂、实验室和我们的测控站。\n回信里，我想把他们一起写进去。",
-    "portrait": null
+    "portrait": "operator"
   },
   {
     "id": "moon-received",
@@ -343,7 +349,8 @@ window.STORY = [
     "scene": "finale",
     "speaker": "嫦娥的声音",
     "text": "原来，你们把这么多人的心愿，带到了远方。\n这封人间的回信，我收到了。",
-    "portrait": null
+    "portrait": "change",
+    "portraitStyle": "apparition"
   },
   {
     "id": "last-record",

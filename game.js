@@ -23,8 +23,9 @@
  function advance(){if(index<STORY.length-1){index++;render()}}
  function render(){
   const step=STORY[index];if(step.ending){ending();return}enter(step.task?'task':'dialogue');World.set(step.scene,step.animation||((step.task==='landing')?'landing':''));footer(step.chapter);save();
-  const portraitKey=step.portrait;
-  const portrait=portraitKey?`<img class="character-portrait character-${portraitKey}" src="${CHARACTERS[portraitKey]}" alt="${portraitKey==='operator'?'主控':'嫦娥'}" draggable="false">`:'';
+  const portraitKey=step.portrait??(['你','地面测控'].includes(step.speaker)?'operator':['嫦娥','嫦娥的声音'].includes(step.speaker)&&!['palace','ancient'].includes(step.scene)?'change':null);
+  const apparition=portraitKey==='change'&&!['palaceEmpty','palace','ancient'].includes(step.scene);
+  const portrait=portraitKey?`<img class="character-portrait character-${portraitKey}${apparition?' character-apparition':''}" src="${CHARACTERS[portraitKey]}" alt="${portraitKey==='operator'?'主控':apparition?'嫦娥虚影':'嫦娥'}" draggable="false">`:'';
   const title=`<div class="chapter-heading"><p class="eyebrow">第${nums[step.chapter]}章</p><h2>${CHAPTERS[step.chapter]}</h2></div>`;
   if(step.task){main.innerHTML=`${title}<section class="task-panel">${step.task==='signal'?'':`<div class="speaker">${step.task==='finale'?'终章':'主控 · 任务'}</div>`}<h2>${step.title}</h2><div class="interaction" id="interaction"></div><button class="back task-back" id="back">← 上一段</button></section>`;$('#back').onclick=()=>{index--;render()};mountTask(step);return}
   main.innerHTML=`${title}<div class="dialogue-stack">${portrait}<section class="dialogue-panel" aria-label="剧情对话">${step.speaker?`<div class="speaker">${step.speaker}</div>`:''}<p class="narrative" tabindex="-1">${step.text}</p><div class="story-actions"><button class="back" id="back" ${index===0?'disabled':''}>← 上一段</button><button class="next" id="next">${STORY[index+1]?.ending?'收起故事':STORY[index+1]?.task?'开始操作':'继续'}<span class="arrow" aria-hidden="true">→</span></button></div></section></div>`;
