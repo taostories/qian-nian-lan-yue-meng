@@ -77,3 +77,8 @@
  .mission .circuit-board{max-width:330px}
  .mission .route-grid{padding:5px;gap:3px}
 }
+
+/* Supplied sample icons retain transparent edges over the lunar grid. */
+.mission .sample-icon{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none;filter:drop-shadow(0 1px 2px #080b1866)}
+.mission .route-cell.collected .sample-icon{opacity:.5}
+.mission .route-cell.rock{background:#10152b18}
