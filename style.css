@@ -65,10 +65,11 @@ body .app{position:relative;z-index:1}
 @media(max-height:600px) and (min-width:521px){.meeting-portraits{height:220px}}
 
 /* Keep chapter-four dialogue and portrait baselines steady across every line. */
-.chapter-four-dialogue .dialogue-panel{height:250px;display:flex;flex-direction:column;animation:none}
-.chapter-four-dialogue .speaker{min-height:22px;flex:none}
+.chapter-four-dialogue .dialogue-panel{height:204px;display:flex;flex-direction:column;animation:none;padding-top:10px;padding-bottom:8px}
+.chapter-four-dialogue .speaker{min-height:20px;margin-bottom:5px;flex:none}
 .chapter-four-dialogue .narrative{min-height:0;flex:1;overflow-y:auto;scrollbar-width:thin}
-.chapter-four-dialogue .story-actions{flex:none}
-@media(min-width:521px) and (max-width:800px){.chapter-four-dialogue .dialogue-panel{height:300px}}
-@media(max-width:520px){.chapter-four-dialogue .dialogue-panel{height:350px}.chapter-four-dialogue .meeting-portraits{height:min(260px,max(120px,calc(100svh - 550px)))}}
-@media(max-height:600px) and (min-width:521px){.chapter-four-dialogue .dialogue-panel{height:230px}}
+.chapter-four-dialogue .story-actions{flex:none;margin-top:4px}
+@media(min-width:521px) and (max-width:800px){.chapter-four-dialogue .dialogue-panel{height:250px}}
+@media(max-width:520px){.chapter-four-dialogue .dialogue-panel{height:265px}.chapter-four-dialogue .meeting-portraits{height:min(260px,max(120px,calc(100svh - 465px)))}}
+@media(max-width:360px){.chapter-four-dialogue .dialogue-panel{height:295px}.chapter-four-dialogue .meeting-portraits{height:min(260px,max(120px,calc(100svh - 495px)))}}
+@media(max-height:600px) and (min-width:521px){.chapter-four-dialogue .dialogue-panel{height:204px}}
