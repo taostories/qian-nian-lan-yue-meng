@@ -25,7 +25,7 @@
 .mission .aim-controls{justify-content:center;margin:6px 0 12px}
 
 /* 用户提供的仪器原画，三路可操作波形对齐实体显示窗口。 */
-.mission .signal-rows{position:relative;display:block;height:440px;background:url('assets/ui/signal-console.jpg?v=game-art-20261016') center/100% 100% no-repeat;border-radius:8px}
+.mission .signal-rows{position:relative;display:block;height:440px;background:url('assets/ui/signal-console.webp?v=preload-lite-20261016') center/100% 100% no-repeat;border-radius:8px}
 .mission .signal-row{position:absolute;left:14%;width:72%;height:19%;padding:4px 10px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:22px minmax(0,1fr);gap:0 8px;align-items:stretch}
 .mission .signal-row:nth-child(1){top:17%}.mission .signal-row:nth-child(2){top:40.5%}.mission .signal-row:nth-child(3){top:64%}
 .mission .signal-row .channel-name{grid-column:1;grid-row:1;margin:0;align-self:center;font-size:16px}
@@ -40,7 +40,7 @@
 @media(min-width:601px){.mission .signal-rows{height:400px}}
 
 /* User artwork: align real controls with the blank instrument screens. */
-.mission .orbit-console{position:relative;width:100%;aspect-ratio:1672/940;background:url('assets/ui/orbit-console.jpg?v=game-art-20261016') center/100% 100% no-repeat}
+.mission .orbit-console{position:relative;width:100%;aspect-ratio:1672/940;background:url('assets/ui/orbit-console.webp?v=preload-lite-20261016') center/100% 100% no-repeat}
 .mission .radar-slot{position:absolute;left:.8%;top:4.5%;width:45.5%;height:81%}
 .mission #radar{width:100%;height:100%;max-height:none;background:transparent;border:0;border-radius:50%}
 .mission #radar>circle:not(:last-child),.mission #radar>path:first-of-type{stroke:#b2c4f346}
@@ -53,14 +53,14 @@
 .mission .orbit-readout .readout{min-height:28px}
 .mission .orbit-readout>.controls{justify-content:center;margin-top:8px}
 .mission[data-game=orbit] .game-help{margin-top:12px}
-.mission .route-grid{background:linear-gradient(#11152a10,#11152a10),url('assets/ui/sample-surface.jpg?v=game-art-20261016') center/cover;border:1px solid #b7b5d56b;border-radius:8px;padding:7px;gap:4px}
+.mission .route-grid{background:linear-gradient(#11152a10,#11152a10),url('assets/ui/sample-surface.webp?v=preload-lite-20261016') center/cover;border:1px solid #b7b5d56b;border-radius:8px;padding:7px;gap:4px}
 .mission .route-cell{background:#10152b18;border-color:#e2dcf76b;color:#fff;text-shadow:0 1px 4px #080b18;font-weight:600}
 .mission .route-cell.rock{background:radial-gradient(ellipse,#0a0d18 25%,#2b2945b0 55%,#11162440 75%);border-color:#e3d1ee60;color:#e4d8ed}
 .mission .route-cell.visited{background:#6b52ad82;border-color:#e8ddff}
 .mission .route-cell.current{background:#9f83dbad;outline:2px solid #fff;color:#fff;box-shadow:0 0 12px #dcc9ff80}
 .mission .route-cell.collected{color:#f0dfb5}
 .mission .circuit-board{max-width:390px}
-.mission .circuit-frame{width:100%;aspect-ratio:1;padding:12%;background:url('assets/ui/circuit-panel.jpg?v=game-art-20261016') center/100% 100% no-repeat}
+.mission .circuit-frame{width:100%;aspect-ratio:1;padding:12%;background:url('assets/ui/circuit-panel.webp?v=preload-lite-20261016') center/100% 100% no-repeat}
 .mission .circuit-grid{width:100%;height:100%;max-width:none;gap:5px}
 .mission .circuit-tile{background:#151c3c55;border-color:#93a9dc60;box-shadow:inset 0 1px 6px #03091d66}
 .mission .circuit-tile.powered{background:#7062a66b;border-color:#d6caff;box-shadow:inset 0 0 10px #c8b5ff25}
@@ -68,9 +68,9 @@
 .mission .circuit-tile.powered .wire{stroke:#ede5ff;filter:drop-shadow(0 0 3px #c4acff)}
 @media(max-width:600px){
  .mission .orbit-console{display:grid;grid-template-columns:1fr;gap:10px;aspect-ratio:auto;background:none}
- .mission .radar-slot{position:relative;inset:auto;width:min(100%,230px);height:auto;aspect-ratio:785/815;margin:auto;background:url('assets/ui/orbit-radar.jpg?v=game-art-20261016') center/100% 100% no-repeat;border-radius:9px}
+ .mission .radar-slot{position:relative;inset:auto;width:min(100%,230px);height:auto;aspect-ratio:785/815;margin:auto;background:url('assets/ui/orbit-radar.webp?v=preload-lite-20261016') center/100% 100% no-repeat;border-radius:9px}
  .mission #radar{position:absolute;left:0;top:0;width:100%;height:100%;max-height:none}
- .mission .wave-slot{position:relative;inset:auto;width:100%;height:78px;background:url('assets/ui/orbit-wave.jpg?v=game-art-20261016') center/100% 100% no-repeat;border-radius:7px}
+ .mission .wave-slot{position:relative;inset:auto;width:100%;height:78px;background:url('assets/ui/orbit-wave.webp?v=preload-lite-20261016') center/100% 100% no-repeat;border-radius:7px}
  .mission .wave-slot #echo-wave{padding:8% 6%}
  .mission .orbit-console-controls{position:static;width:100%;padding:5px 3px}
  .mission .orbit-console-controls .aim-controls{margin-bottom:0}

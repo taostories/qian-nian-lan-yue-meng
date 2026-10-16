@@ -3,7 +3,7 @@ window.ARTWORK = {
   cover:'assets/00-cover.webp?v=art-webp-20261016', ancient:'assets/01-ancient.webp?v=art-webp-20261016', palace:'assets/02-palace.webp?v=art-webp-20261016', palaceEmpty:'assets/02-palace-empty.webp?v=art-webp-20261016', control:'assets/03-control.webp?v=art-webp-20261016',
   cosmos:'assets/04-cosmos.webp?v=art-webp-20261016', surface:'assets/05-surface.webp?v=art-webp-20261016', finale:'assets/06-finale.webp?v=art-webp-20261016'
 };
-window.CHARACTERS = {operator:'assets/characters/operator.png?v=game-art-20261016',change:'assets/characters/change.png?v=game-art-20261016'};
+window.CHARACTERS = {operator:'assets/characters/operator.webp?v=preload-lite-20261016',change:'assets/characters/change.webp?v=preload-lite-20261016'};
 window.CHAPTERS = ['月下的故事','地面的守候','走近真实的月亮','写给人间的回信'];
 window.LOCATIONS = {cover:'九州山河 · 月出之时',ancient:'九州山河 · 月出之时',palace:'广寒月宫 · 千载守望',palaceEmpty:'广寒月宫 · 千载守望',control:'华夏测控站 · 地月之间',cosmos:'宇宙深空 · 星河赴约',surface:'月球表面 · 今夕归期',finale:'星月同辉 · 千年梦圆'};
 // 稳定剧情 ID 用于跨版本存档；旧版本索引只在迁移时读取。

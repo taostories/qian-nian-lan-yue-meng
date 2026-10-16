@@ -25,20 +25,21 @@
  }
  function preloadArtwork(){
   if(preloadStarted)return;preloadStarted=true;
-  const taskArt={orbit:['orbit-console.jpg','orbit-radar.jpg','orbit-wave.jpg'],signal:['signal-console.jpg'],landing:['lander.png'],sample:['sample-surface.jpg'],upload:['circuit-panel.jpg']};
-  const queue=[],seen=new Set();
-  function add(src,key){if(!src||seen.has(src))return;seen.add(src);queue.push(()=>key?loadArtwork(key,'low'):loadImage(src))}
+  const taskArt={orbit:['orbit-console.webp','orbit-radar.webp','orbit-wave.webp'],signal:['signal-console.webp'],landing:['lander.webp'],sample:['sample-surface.webp'],upload:['circuit-panel.webp']};
+  const backgrounds=[],details=[],seen=new Set();
+  function add(src,key){if(!src||seen.has(src))return;seen.add(src);(key?backgrounds:details).push(()=>key?loadArtwork(key,'low'):loadImage(src))}
   // Story order warms nearby scenes, portraits and game art first. Two low-priority
-  // workers limit contention; entering a queued scene promotes its existing request.
+  // workers limit contention. Backgrounds have their own queue so a large portrait
+  // cannot block later scenes; entering a queued scene promotes its existing request.
   for(const step of window.STORY||[]){
    add(window.ARTWORK[step.scene],step.scene);
    if(step.portrait)add(window.CHARACTERS[step.portrait]);
-   for(const file of taskArt[step.task]||[])add('assets/ui/'+file+'?v=game-art-20261016');
+   for(const file of taskArt[step.task]||[])add('assets/ui/'+file+'?v=preload-lite-20261016');
   }
   for(const [key,src] of Object.entries(window.ARTWORK))add(src,key);
   for(const src of Object.values(window.CHARACTERS||{}))add(src);
-  async function worker(){while(queue.length)await queue.shift()()}
-  worker();worker();
+  async function worker(queue){while(queue.length)await queue.shift()()}
+  worker(backgrounds);worker(details);
  }
  let rng=1;
  function random(){rng=(Math.imul(rng,1664525)+1013904223)>>>0;return rng/4294967296}
