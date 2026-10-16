@@ -203,7 +203,7 @@ window.STORY = [
     "chapter": 1,
     "scene": "control",
     "speaker": "你",
-    "text": "愿意。等这次任务的记录传回来，\n我就把它和地球影像放在一起，写成一封给月亮的回信。",
+    "text": "愿意。我刚接住了远方的信号。\n等着陆影像和采样记录传回来，我就用这一路的经历，写一封给月亮的回信。",
     "portrait": "operator"
   },
   {
@@ -211,7 +211,7 @@ window.STORY = [
     "chapter": 1,
     "scene": "control",
     "speaker": "",
-    "text": "你在工作手记的空白处写下“人间回信”。这是留给古老故事的一份约定。\n真正的任务仍在继续：安全着陆、完成采样、传回记录。",
+    "text": "你在工作手记里写下“人间回信”，把刚刚校准的信号波形描在第一页。\n波形下面，是第一句话：“我们听见了。有人一直守着远方的消息。”",
     "portrait": null
   },
   {
@@ -272,6 +272,14 @@ window.STORY = [
     "portrait": "operator"
   },
   {
+    "id": "letter-landing-page",
+    "chapter": 2,
+    "scene": "surface",
+    "speaker": "",
+    "portrait": null,
+    "text": "你把着陆确认与第一幅月面影像夹进手记，作为回信的第二页。\n“我们到了。远方有了清楚的模样，也留下了继续探索的问题。”"
+  },
+  {
     "id": "paved-road",
     "chapter": 2,
     "scene": "surface",
@@ -310,6 +318,14 @@ window.STORY = [
     "speaker": "地面测控",
     "text": "三处样本已封存，位置和影像一一对应。\n它们尚未回到地球，后续转运与研究还需要这些记录。",
     "portrait": "operator"
+  },
+  {
+    "id": "letter-sample-page",
+    "chapter": 2,
+    "scene": "surface",
+    "speaker": "",
+    "portrait": null,
+    "text": "回信的第三页，记下你规划的采样位置与对应影像。\n“我们带着问题寻找答案。每一份样本，都要记清它从哪里来。”"
   },
   {
     "id": "moon-has-history",
@@ -356,15 +372,23 @@ window.STORY = [
     "chapter": 3,
     "scene": "surface",
     "speaker": "地面测控",
-    "text": "任务数据接收完整。位置、影像、样本记录，核对一致。\n交接完成。现在，我想把这一路的经历，写给月下听故事的人。",
+    "text": "任务数据接收完整。位置、影像、样本记录，核对一致。\n交接完成。现在，可以把亲手接住的消息，写进那封回信了。",
     "portrait": "operator"
+  },
+  {
+    "id": "letter-readback",
+    "chapter": 3,
+    "scene": "surface",
+    "speaker": "回信",
+    "portrait": null,
+    "text": "给月亮：\n信号已接住，探测器已落稳，样本也有了完整记录。你问人间的灯还亮着吗？请看，这一路，总有人为远方守着灯。"
   },
   {
     "id": "so-many-lights",
     "chapter": 3,
     "scene": "finale",
     "speaker": "",
-    "text": "你把地球夜景与月面影像铺进回信。信页展开，儿时故事里的广寒宫阙浮现在月光中。\n一道光从宫门延伸到探测器旁，像一条等了很久才接通的路。",
+    "text": "你仍坐在地球的测控站，面前摊着工作手记。\n在你写下的回信里，月宫与月面渐渐相连，一场跨越古今的相见由此展开。",
     "portrait": null
   },
   {
@@ -372,7 +396,7 @@ window.STORY = [
     "chapter": 3,
     "scene": "finale",
     "speaker": "",
-    "text": "嫦娥走出宫门。随着她向前，身后的宫阙与桂影渐渐化作月光，脚下显露出岩石、月壤和探测器留下的印痕。\n回信把传说中的月宫与今日抵达的月面，连在了一起。",
+    "text": "信页上，嫦娥走出宫门。宫阙与桂影化作月光，脚下显露出着陆影像里的岩石与月壤。\n传说中的她，走进了你记录的今天。",
     "portrait": null
   },
   {
@@ -380,7 +404,7 @@ window.STORY = [
     "chapter": 3,
     "scene": "finale",
     "speaker": "",
-    "text": "她在探测器旁停下，衣袖垂落，眉目清晰。你也沿着展开的信页走到她面前。\n这一次，你们之间没有遥远的呼唤，只有相见时短暂的安静。",
+    "text": "在这封信的故事里，你来到探测器旁。嫦娥停下脚步，眉目清晰。\n隔了那么久，终于可以面对面，把人间的消息讲给她听。",
     "portrait": null,
     "portraits": [
       "operator",
@@ -436,7 +460,7 @@ window.STORY = [
     "chapter": 3,
     "scene": "finale",
     "speaker": "主控",
-    "text": "记得。只是……听见你的声音，和真的站在你面前，还是不一样。\n小时候听故事，怎么也没想到，有一天能亲口把这一路讲给你听。",
+    "text": "记得。小时候听你的故事，只能想象月亮。\n今天写这封信，我终于有了可以给你看的东西。",
     "portrait": "operator",
     "portraits": [
       "operator",
@@ -450,7 +474,7 @@ window.STORY = [
     "chapter": 3,
     "scene": "finale",
     "speaker": "主控",
-    "text": "你问过，人间的灯还亮着吗？\n你看，有等人回家的窗，也有深夜仍亮着的实验室。我们的测控站，就在其中。",
+    "text": "你问过，人间的灯还亮着吗？\n你看，这是地球的夜景。我的值班灯也在其中——第一页的信号，就是在那盏灯下接住的。",
     "portrait": "operator",
     "portraits": [
       "operator",
@@ -478,7 +502,7 @@ window.STORY = [
     "chapter": 3,
     "scene": "finale",
     "speaker": "主控",
-    "text": "很久。有人做试验、查故障，有人把一生交给了一个问题。\n今晚，我接过上一班的记录，守住这段信号，再完整交给下一班。你眼前这艘小舟，是大家一起送来的。",
+    "text": "很久。有人试验接头，有人校准仪器，有人守着下一班。\n你看到的波形、着陆影像和样本记录，经过了许多双手，才来到这封信里。",
     "portrait": "operator",
     "portraits": [
       "operator",
@@ -492,7 +516,7 @@ window.STORY = [
     "chapter": 3,
     "scene": "finale",
     "speaker": "嫦娥",
-    "text": "从前，人们把走不到的远方，托付给我的故事。\n如今，你们把路一步步走出来了。我等来的，原来是这样的相逢。",
+    "text": "我读到了。有人守住声音，有人为远行铺路，还有人把每一份发现认真记下。\n原来，人间的消息，就在你们做成的这些小事里。",
     "portrait": "change",
     "portraitStyle": "solid",
     "portraits": [
@@ -520,7 +544,7 @@ window.STORY = [
     "chapter": 3,
     "scene": "finale",
     "speaker": "嫦娥",
-    "text": "那就把这封回信带回人间吧。告诉那个仰头的孩子：月亮还有许多秘密，等着他来问。\n下一次相逢，我想听听他的故事。",
+    "text": "那就把这封回信带回故事开始的地方吧。\n让那个仰头的孩子看看：当年的问题，已有后来的人认真回答。还有新的问题，等着他来问。",
     "portrait": "change",
     "portraits": [
       "operator",
@@ -542,7 +566,7 @@ window.STORY = [
     "chapter": 3,
     "scene": "ancient",
     "speaker": "",
-    "text": "回信的末页，画着开头那座古老庭院。\n你把那个曾经没有答案的问题，重新写在月光下。",
+    "text": "你在测控站合上手记，最后一页画着开头那座古老庭院。\n画旁留着孩子的问题，也添上了这次任务带来的回答。",
     "portrait": null
   },
   {
@@ -574,7 +598,7 @@ window.STORY = [
     "chapter": 3,
     "scene": "ancient",
     "speaker": "回信",
-    "text": "后来，我们造的探测器到了。\n往后，还会有人接着问，接着走。",
+    "text": "后来，我们造的探测器到了。\n这里有接回的信号、着陆的影像，还有等待研究的样本记录。往后，会有人带着新问题，继续走。",
     "portrait": null
   },
   {
