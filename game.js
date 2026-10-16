@@ -32,7 +32,7 @@
   $('#back').onclick=()=>{if(index>0){index--;render()}};$('#next').onclick=advance;
  }
  function status(text){$('#task-status').textContent=text}
- function complete(text,button='继续故事'){completed.add(index);save();if(['sample','signal'].includes(STORY[index].task)){tone(523.25);advance();return}status(text);$('#interaction').querySelectorAll('input,button').forEach(el=>el.disabled=true);const next=document.createElement('button');next.className='primary';next.id='task-next';next.textContent=button+'  →';next.onclick=advance;$('#interaction').appendChild(next);tone(523.25);}
+ function complete(text,button='继续故事'){completed.add(index);save();if(['sample','signal'].includes(STORY[index].task)){tone(523.25);advance();return}status(text);$('#interaction').querySelectorAll('input,button').forEach(el=>el.disabled=true);const next=document.createElement('button');next.className='primary';next.id='task-next';next.textContent=button+'  →';next.onclick=advance;const reset=STORY[index].task==='orbit'?$('#radar-reset'):null;if(reset)reset.replaceWith(next);else $('#interaction').appendChild(next);tone(523.25);}
  function mountTask(step){
   const root=$('#interaction'),done=completed.has(index);
   if(step.task!=='finale'){
