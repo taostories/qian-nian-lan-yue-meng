@@ -324,7 +324,7 @@ window.STORY = [
     "chapter": 3,
     "scene": "surface",
     "speaker": "地面测控",
-    "text": "任务数据接收完整。位置、影像、样本记录，核对一致。\n可以交接了。那封留在手记里的回信，也终于能写完。",
+    "text": "任务数据接收完整。位置、影像、样本记录，核对一致。\n交接完成。现在，我想把这一路的经历，写给月下听故事的人。",
     "portrait": "operator"
   },
   {
@@ -332,41 +332,118 @@ window.STORY = [
     "chapter": 3,
     "scene": "finale",
     "speaker": "",
-    "text": "你把地球夜景与月面影像组成回信的最后一页。眼前的画面，是这封信的想象：让远行的探测器，也望一眼故乡。\n故事里嫦娥的声音，又在心中响起。",
-    "portrait": null
+    "text": "你把地球夜景与月面影像铺在回信里，月光仿佛将信页展开成一片天地。\n在这片由记忆与想象织成的月色里，你终于与嫦娥相见。她站在探测器旁，转身望向你。",
+    "portrait": null,
+    "portraits": [
+      "operator",
+      "change"
+    ],
+    "meeting": true
+  },
+  {
+    "id": "meeting-greeting",
+    "chapter": 3,
+    "scene": "finale",
+    "speaker": "嫦娥",
+    "text": "方才还在遥望人间，转身就见到了你。\n你叫什么名字？",
+    "portrait": "change",
+    "portraits": [
+      "operator",
+      "change"
+    ],
+    "meeting": true
+  },
+  {
+    "id": "meeting-introduction",
+    "chapter": 3,
+    "scene": "finale",
+    "speaker": "主控",
+    "text": "我是今晚值班的观测员。小时候，在院子里听过你的故事。\n那时我问，月亮那么远，真的有人能走近吗？今天，终于有了可以带来的回答。",
+    "portrait": "operator",
+    "portraits": [
+      "operator",
+      "change"
+    ],
+    "meeting": true
   },
   {
     "id": "lights-answer",
     "chapter": 3,
     "scene": "finale",
-    "speaker": "你",
-    "text": "那些灯下，有等人回家的窗，也有工厂、实验室和我们的测控站。\n回信里，我想把他们一起写进去。",
-    "portrait": "operator"
+    "speaker": "主控",
+    "text": "你问过，人间的灯还亮着吗？\n你看，有等人回家的窗，也有深夜仍亮着的实验室。我们的测控站，就在其中。",
+    "portrait": "operator",
+    "portraits": [
+      "operator",
+      "change"
+    ],
+    "meeting": true
+  },
+  {
+    "id": "meeting-those-who-wait",
+    "chapter": 3,
+    "scene": "finale",
+    "speaker": "嫦娥",
+    "text": "原来，在人间，也有人这样守着长夜。\n这一程，你们走了很久吧？",
+    "portrait": "change",
+    "portraits": [
+      "operator",
+      "change"
+    ],
+    "meeting": true
+  },
+  {
+    "id": "meeting-many-hands",
+    "chapter": 3,
+    "scene": "finale",
+    "speaker": "主控",
+    "text": "很久。有人做试验、查故障，有人把一生交给了一个问题。\n今晚，我接过上一班的记录，守住这段信号，再完整交给下一班。你眼前这艘小舟，是大家一起送来的。",
+    "portrait": "operator",
+    "portraits": [
+      "operator",
+      "change"
+    ],
+    "meeting": true
   },
   {
     "id": "moon-received",
     "chapter": 3,
     "scene": "finale",
-    "speaker": "嫦娥的声音",
-    "text": "原来，你们把这么多人的心愿，带到了远方。\n这封人间的回信，我收到了。",
+    "speaker": "嫦娥",
+    "text": "从前，人们把走不到的远方，托付给我的故事。\n如今，你们把路一步步走出来了。我等来的，原来是这样的相逢。",
     "portrait": "change",
-    "portraitStyle": "apparition"
+    "portraitStyle": "apparition",
+    "portraits": [
+      "operator",
+      "change"
+    ],
+    "meeting": true
   },
   {
     "id": "last-record",
     "chapter": 3,
     "scene": "finale",
-    "speaker": "",
-    "text": "你在正式任务记录上完成交接，又在自己的手记末尾写下：“回信已达。”\n一份留给下一班，一份留给听故事的人。",
-    "portrait": null
+    "speaker": "主控",
+    "text": "小时候，是你的故事让我抬头看月亮。如今，我想把造探测器、守信号、研究月壤的人，也讲给孩子们听。\n让他们知道，故事里的远方，可以从自己脚下开始。",
+    "portrait": "operator",
+    "portraits": [
+      "operator",
+      "change"
+    ],
+    "meeting": true
   },
   {
     "id": "closing",
     "chapter": 3,
     "scene": "finale",
-    "speaker": "",
-    "text": "这场想象中的对话，到这里轻轻收住。\n真实留下的，是月面的记录，也是人们继续探索的理由。",
-    "portrait": null
+    "speaker": "嫦娥",
+    "text": "那就把这封回信带回人间吧。告诉那个仰头的孩子：月亮还有许多秘密，等着他来问。\n下一次相逢，我想听听他的故事。",
+    "portrait": "change",
+    "portraits": [
+      "operator",
+      "change"
+    ],
+    "meeting": true
   },
   {
     "id": "finale",
