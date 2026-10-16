@@ -89,6 +89,12 @@ body .app{position:relative;z-index:1}
 @media(max-width:520px){.app[data-mode=ending] .ending-reveal{margin-bottom:max(38px,env(safe-area-inset-bottom));padding:0 4px}.ending-reveal h2{font-size:30px;letter-spacing:.06em}.ending-reveal .end-line{font-size:18px}.ending-reveal .actions{gap:18px}}
 @media(prefers-reduced-motion:reduce){.ending-reveal h2,.ending-reveal .end-line span,.ending-reveal .actions{opacity:1;transform:none;visibility:visible}}
 
-/* Enlarge the operator above the same dialogue baseline, including the meeting. */
-.character-operator{transform:scale(1.16);transform-origin:left bottom}
-@media(max-width:520px){.character-operator{transform:scale(1.12)}}
+/* Keep the larger operator's head at the original height; crop the lower body at the dialogue. */
+.character-operator{transform:scale(1.16);transform-origin:left top;clip-path:inset(0 0 13.7931% 0)}
+.meeting-portraits{overflow:hidden}
+.meeting-portraits .character-operator{clip-path:none}
+@media(max-width:520px){
+ .character-operator{transform:scale(1.12);clip-path:inset(0 0 10.7143% 0)}
+ /* Chang'e fits the half-width slot; align the operator with her actual image top. */
+ .meeting-portraits .character-operator{transform:translateY(max(0px,calc(100% - 55.1724vw))) scale(1.12)}
+}
