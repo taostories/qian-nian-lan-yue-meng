@@ -408,7 +408,7 @@ window.STORY = [
     "chapter": 3,
     "scene": "finale",
     "speaker": "主控",
-    "text": "你……就是嫦娥？\n那天问我孩子们还看不看月亮的，真的是你？",
+    "text": "你……就是嫦娥？\n那天在测控站，我听见你问：“后来的孩子，还会抬头看月亮吗？”原来，真的是你。",
     "portrait": "operator",
     "portraits": [
       "operator",
