@@ -23,7 +23,7 @@
  function advance(){if(index<STORY.length-1){index++;render()}}
  function render(){
   const step=STORY[index];if(step.ending){ending();return}enter(step.task?'task':'dialogue');World.set(step.scene,step.animation||((step.task==='landing')?'landing':''));footer(step.chapter);save();
-  const portraitKey=step.speaker==='你'?'operator':step.speaker==='嫦娥'&&!['ancient','palace'].includes(step.scene)?'change':null;
+  const portraitKey=step.portrait;
   const portrait=portraitKey?`<img class="character-portrait character-${portraitKey}" src="${CHARACTERS[portraitKey]}" alt="${portraitKey==='operator'?'主控':'嫦娥'}" draggable="false">`:'';
   const title=`<div class="chapter-heading"><p class="eyebrow">第${nums[step.chapter]}章</p><h2>${CHAPTERS[step.chapter]}</h2></div>`;
   if(step.task){main.innerHTML=`${title}<section class="task-panel">${step.task==='signal'?'':`<div class="speaker">${step.task==='finale'?'终章':'主控 · 任务'}</div>`}<h2>${step.title}</h2><div class="interaction" id="interaction"></div><button class="back task-back" id="back">← 上一段</button></section>`;$('#back').onclick=()=>{index--;render()};mountTask(step);return}
@@ -37,10 +37,10 @@
   if(step.task!=='finale'){
    cleanup=MoonGames.mount(step.task,root,{complete,tone,mission,onLanding:zone=>{mission.zone=zone;save()}});
   } else if(step.task==='finale'){
-   root.innerHTML='<p class="task-description">点击月面探测器，留住回信抵达的这一刻。</p><p class="task-status" id="task-status" role="status"></p>';
-   const probe=document.createElement('button');probe.className='probe-hotspot';probe.id='probe';probe.setAttribute('aria-label','点击探测器，定格结局');probe.innerHTML='<span>探测器 <b aria-hidden="true">✧</b></span>';main.appendChild(probe);
+   root.innerHTML='<p class="task-description">点击画中的探测器，收好回信，回到故事的开头。</p><p class="task-status" id="task-status" role="status"></p>';
+   const probe=document.createElement('button');probe.className='probe-hotspot';probe.id='probe';probe.setAttribute('aria-label','点击画中的探测器，翻到回信末页');probe.innerHTML='<span>探测器 <b aria-hidden="true">✧</b></span>';main.appendChild(probe);
    const position=()=>{const p=World.anchor();probe.style.left=p.x+'px';probe.style.top=p.y+'px'};position();addEventListener('sceneartload',position);let timer;cleanup=()=>{clearTimeout(timer);removeEventListener('sceneartload',position)};
-   probe.onclick=()=>{probe.disabled=true;World.set('finale','complete');completed.add(index);save();status('回信已达。月光下，故事仍在继续。');timer=setTimeout(advance,1800)};
+   probe.onclick=()=>{probe.disabled=true;World.set('finale','complete');completed.add(index);save();status('回信写好了。翻回故事的第一页。');timer=setTimeout(advance,1800)};
   }
   // Completed interactions remain replayable; continuation is available on revisit.
   if(done&&step.task!=='finale'){const skip=document.createElement('button');skip.className='text-button replay-next';skip.textContent='已完成 · 继续故事 →';skip.onclick=advance;root.appendChild(skip)}
