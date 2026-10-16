@@ -133,8 +133,16 @@
  }
  function build(){
   background.width=Math.round(W*devicePixelRatio);background.height=Math.round(H*devicePixelRatio);bg.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);rng=773;
-  if(images[scene]){const im=images[scene],scale=Math.max(W/im.width,H/im.height),left=W<800?(W-im.width*scale)*(scene==='finale'?.67:.77):(W-im.width*scale)/2;bg.drawImage(im,left,(H-im.height*scale)/2,im.width*scale,im.height*scale);}
-  else {({cover:ancient,ancient,palace,palaceEmpty:c=>palace(c,false),control,cosmos,surface:c=>land(c,false),finale:c=>land(c,true)})[scene](bg);
+  if(images[scene]){const im=images[scene];
+   if(scene==='epilogue'&&W/H<.8){
+    // Preserve both figures and the full moon on portrait screens. Only the empty
+    // foreground below the railing stretches vertically to hold the ending text.
+    const sx=im.width*.31,sw=im.width*.40,split=im.height*.70,top=W*split/sw;
+    bg.drawImage(im,sx,0,sw,split,0,0,W,top);
+    bg.drawImage(im,sx,split,sw,im.height-split,0,top,W,H-top);
+   }else{const scale=Math.max(W/im.width,H/im.height),left=W<800?(W-im.width*scale)*(scene==='epilogue'?.47:scene==='finale'?.67:.77):(W-im.width*scale)/2;bg.drawImage(im,left,(H-im.height*scale)/2,im.width*scale,im.height*scale);}
+  }
+  else {({cover:ancient,ancient,epilogue:ancient,palace,palaceEmpty:c=>palace(c,false),control,cosmos,surface:c=>land(c,false),finale:c=>land(c,true)})[scene](bg);
    // Keep the text side readable inside the scene itself, without DOM image layers.
    const shade=bg.createLinearGradient(0,0,W,0);shade.addColorStop(0,'rgba(12,7,30,.56)');shade.addColorStop(.43,'rgba(12,7,30,.3)');shade.addColorStop(.72,'rgba(12,7,30,0)');bg.fillStyle=shade;bg.fillRect(0,0,W,H);
    if(W<800){let g=bg.createLinearGradient(0,0,0,H);g.addColorStop(0,'rgba(14,9,32,0)');g.addColorStop(.42,'rgba(14,9,32,.15)');g.addColorStop(.65,'rgba(14,9,32,.85)');g.addColorStop(1,'rgba(14,9,32,.95)');bg.fillStyle=g;bg.fillRect(0,0,W,H)}
