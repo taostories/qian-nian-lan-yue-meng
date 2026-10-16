@@ -73,3 +73,18 @@ body .app{position:relative;z-index:1}
 @media(max-width:520px){.chapter-four-dialogue .dialogue-panel{height:265px}.chapter-four-dialogue .meeting-portraits{height:min(260px,max(120px,calc(100svh - 465px)))}}
 @media(max-width:360px){.chapter-four-dialogue .dialogue-panel{height:295px}.chapter-four-dialogue .meeting-portraits{height:min(260px,max(120px,calc(100svh - 495px)))}}
 @media(max-height:600px) and (min-width:521px){.chapter-four-dialogue .dialogue-panel{height:204px}}
+
+/* The final words emerge directly over the illustration, without a dialogue card. */
+.app[data-mode=ending] #chapter-label,.app[data-mode=ending] footer,.app[data-mode=ending] .brand{display:none}
+.app[data-mode=ending] header{justify-content:flex-end}
+.app[data-mode=ending] .ending-reveal{width:min(900px,100%);margin:auto auto 6vh;padding:0 12px;background:none;border:0;border-radius:0;box-shadow:none;text-align:center;text-shadow:0 2px 8px #080c21,0 0 28px #080c21}
+.ending-reveal h2{font-size:clamp(30px,4vw,52px);letter-spacing:.12em;margin:0 0 22px;animation:ending-emerge 2.4s ease-out .3s both}
+.ending-reveal .end-line{font-size:clamp(18px,2vw,23px);line-height:1.9;margin:0 0 30px}
+.ending-reveal .end-line span{display:block;animation:ending-emerge 2.4s ease-out 1.8s both}
+.ending-reveal .end-line span+span{animation-delay:3s}
+.ending-reveal .actions{justify-content:center;gap:24px;animation:ending-emerge 1.8s ease-out 4.6s both}
+.ending-reveal .primary{background:#15112b80;border-color:#d2c4f17a;color:#f0eaff;font-size:16px;min-height:46px;padding:11px 20px;gap:18px;letter-spacing:.06em;text-shadow:0 1px 5px #080c21}
+.ending-reveal .text-button{color:#e3d9f4;text-shadow:0 1px 5px #080c21}
+@keyframes ending-emerge{from{opacity:0;transform:translateY(10px);visibility:hidden}to{opacity:1;transform:translateY(0);visibility:visible}}
+@media(max-width:520px){.app[data-mode=ending] .ending-reveal{margin-bottom:max(38px,env(safe-area-inset-bottom));padding:0 4px}.ending-reveal h2{font-size:30px;letter-spacing:.06em}.ending-reveal .end-line{font-size:18px}.ending-reveal .actions{gap:18px}}
+@media(prefers-reduced-motion:reduce){.ending-reveal h2,.ending-reveal .end-line span,.ending-reveal .actions{opacity:1;transform:none;visibility:visible}}

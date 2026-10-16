@@ -47,7 +47,7 @@
   // Completed interactions remain replayable; continuation is available on revisit.
   if(done&&step.task!=='finale'){const skip=document.createElement('button');skip.className='text-button replay-next';skip.textContent='已完成 · 继续故事 →';skip.onclick=advance;root.appendChild(skip)}
  }
- function ending(){enter('ending');completed.add(index);save();World.set('ancient');World.freeze();footer(3);main.innerHTML='<section class="ending"><p class="eyebrow">千年揽月梦 · 人间回信</p><h2>故事，仍在继续。</h2><p class="end-line">把古老的向往，走成今天的路。<br>下一次仰望，也许就从你开始。</p><div class="actions"><button class="primary" id="home">返回主页面<span class="arrow" aria-hidden="true">→</span></button><button class="text-button" id="replay">再赴星河</button></div></section>';$('#replay').onclick=restart;$('#home').onclick=home}
+ function ending(){enter('ending');completed.add(index);save();World.set(STORY[index].scene);World.freeze();footer(3);main.innerHTML='<section class="ending ending-reveal" aria-label="故事结尾"><h2>故事，仍在继续。</h2><p class="end-line"><span>把古老的向往，走成今天的路。</span><span>下一次仰望，也许就从你开始。</span></p><div class="actions"><button class="primary" id="home">返回主页面<span class="arrow" aria-hidden="true">→</span></button><button class="text-button" id="replay">再赴星河</button></div></section>';$('#replay').onclick=restart;$('#home').onclick=home}
  function tone(f){if(!soundOn||!audioCtx)return;const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(0,audioCtx.currentTime);g.gain.linearRampToValueAtTime(.10,audioCtx.currentTime+.02);g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+.8);o.connect(g);g.connect(master);o.start();o.stop(audioCtx.currentTime+.85)}
  $('#sound').onclick=async()=>{
   try{
