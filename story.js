@@ -137,7 +137,7 @@ window.STORY = [
     "chapter": 1,
     "scene": "control",
     "speaker": "",
-    "text": "回声恢复清晰，探测器的状态数据重新连贯。\n看着屏幕上的月亮，你想起了故事里嫦娥的问话。此后的对话，是你在心中续写的故事。",
+    "text": "回声恢复清晰，探测器的状态数据重新连贯。\n你刚松了一口气，一个轻柔的声音忽然响起，清楚得仿佛就在身旁。",
     "portrait": null
   },
   {
@@ -150,11 +150,43 @@ window.STORY = [
     "portraitStyle": "apparition"
   },
   {
+    "id": "voice-startle",
+    "chapter": 1,
+    "scene": "control",
+    "speaker": "",
+    "text": "你的手停在记录键上，猛地回头。身后只有安静的值班席。\n你重新查看通话记录：没有人呼叫，耳机里也只有设备的提示音。",
+    "portrait": null
+  },
+  {
+    "id": "voice-question",
+    "chapter": 1,
+    "scene": "control",
+    "speaker": "你",
+    "text": "刚才……是谁在说话？\n你说“后来的孩子”……你是谁？",
+    "portrait": "operator"
+  },
+  {
+    "id": "voice-name",
+    "chapter": 1,
+    "scene": "control",
+    "speaker": "嫦娥的声音",
+    "text": "嫦娥。\n你小时候听过我的故事，对吗？",
+    "portrait": "change"
+  },
+  {
+    "id": "voice-recognition",
+    "chapter": 1,
+    "scene": "control",
+    "speaker": "",
+    "text": "“嫦娥？”你低声重复，心跳还没平复，儿时庭院里的月光却忽然清晰起来。\n眼前的数据仍在平稳刷新，而那个只在故事里出现过的人，正等着你的回答。",
+    "portrait": null
+  },
+  {
     "id": "children-answer",
     "chapter": 1,
     "scene": "control",
     "speaker": "你",
-    "text": "会。我也是其中一个。\n小时候想知道月宫是什么样，后来想知道月壤里藏着什么。问题变了，仰望没有停。",
+    "text": "会……我也是其中一个。\n小时候想知道月宫是什么样，后来想知道月壤里藏着什么。问题变了，仰望没有停。",
     "portrait": "operator"
   },
   {
@@ -341,11 +373,37 @@ window.STORY = [
     "meeting": true
   },
   {
+    "id": "meeting-startle",
+    "chapter": 3,
+    "scene": "finale",
+    "speaker": "",
+    "text": "你不自觉地停住脚步，手里的回信攥紧了一角。\n那个曾让你在值班席上惊得回头的声音，如今有了近在眼前的面容。",
+    "portrait": null,
+    "portraits": [
+      "operator",
+      "change"
+    ],
+    "meeting": true
+  },
+  {
+    "id": "meeting-recognition",
+    "chapter": 3,
+    "scene": "finale",
+    "speaker": "主控",
+    "text": "你……就是嫦娥？\n那天问我孩子们还看不看月亮的，真的是你？",
+    "portrait": "operator",
+    "portraits": [
+      "operator",
+      "change"
+    ],
+    "meeting": true
+  },
+  {
     "id": "meeting-greeting",
     "chapter": 3,
     "scene": "finale",
     "speaker": "嫦娥",
-    "text": "方才还在遥望人间，转身就见到了你。\n你叫什么名字？",
+    "text": "是我。还记得你答应过，要带我看看今天的人间吗？",
     "portrait": "change",
     "portraits": [
       "operator",
@@ -358,7 +416,7 @@ window.STORY = [
     "chapter": 3,
     "scene": "finale",
     "speaker": "主控",
-    "text": "我是今晚值班的观测员。小时候，在院子里听过你的故事。\n那时我问，月亮那么远，真的有人能走近吗？今天，终于有了可以带来的回答。",
+    "text": "记得。只是……听见你的声音，和真的站在你面前，还是不一样。\n小时候听故事，怎么也没想到，有一天能亲口把这一路讲给你听。",
     "portrait": "operator",
     "portraits": [
       "operator",
