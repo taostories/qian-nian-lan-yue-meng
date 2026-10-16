@@ -2,10 +2,20 @@
 (() => {
  'use strict';
  const button=document.getElementById('sound');
- const tracks={soaring:new Audio('assets/audio/soaring.mp3'),immersed:new Audio('assets/audio/immersed.mp3')};
+ const suffix=document.createElement('audio').canPlayType('audio/ogg; codecs="opus"')?'-lite.ogg':'.mp3';
+ const tracks={soaring:new Audio('assets/audio/soaring'+suffix),immersed:new Audio('assets/audio/immersed'+suffix)};
  let context,master,effects,active=null,wanted='soaring',enabled=true,revision=0,needsGesture=true;
  const channels={},stops={};
  for(const track of Object.values(tracks)){track.loop=true;track.preload='none'}
+ function warmEnding(){
+  if(tracks.immersed.preload!=='none')return;
+  const main=tracks.soaring;
+  let bufferedAhead=0;
+  for(let i=0;i<main.buffered.length;i++)if(main.buffered.start(i)<=main.currentTime)bufferedAhead=Math.max(bufferedAhead,main.buffered.end(i)-main.currentTime);
+  // Give the main track a head start, even while autoplay awaits the first click.
+  if(bufferedAhead>=12||main.readyState===4){tracks.immersed.preload='auto';tracks.immersed.load()}
+ }
+ for(const event of ['progress','loadeddata','canplaythrough'])tracks.soaring.addEventListener(event,warmEnding);
  function setup(){
   if(context)return;
   context=new (window.AudioContext||window.webkitAudioContext)();
@@ -31,8 +41,7 @@
     fade(gain.gain,key===name?(key==='soaring'?.22:.27):0,2.5);
     if(key!==name){clearTimeout(stops[key]);stops[key]=setTimeout(()=>{if(active!==key)tracks[key].pause()},2700)}
    }
-   // Warm the ending track only after the main music is playing, so art loads first.
-   if(name==='soaring'&&tracks.immersed.preload==='none'){tracks.immersed.preload='auto';tracks.immersed.load()}
+   warmEnding();
   }catch(error){
    if(ticket!==revision)return;
    if(error.name==='NotAllowedError'){needsGesture=true;return}
@@ -64,5 +73,6 @@
   get state(){return {enabled,wanted,active,playing:Object.entries(tracks).filter(([,t])=>!t.paused).map(([n])=>n)}}
  };
  updateButton();
+ tracks.soaring.preload='auto';tracks.soaring.load();
  playWanted();
 })();
