@@ -3,15 +3,42 @@
  const canvas=document.getElementById('world'),ctx=canvas.getContext('2d');
  let W=0,H=0,scene='cover',animation='',start=0,landing=0,frozen=false,lastFrame=0;
  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
- const images={},loading={},background=document.createElement('canvas'),bg=background.getContext('2d');
+ const images={},loading={},requests=new Map(),background=document.createElement('canvas'),bg=background.getContext('2d');
+ let preloadStarted=false;
  function paintBackground(){ctx.clearRect(0,0,W,H);ctx.drawImage(background,0,0,W,H)}
- function loadArtwork(key){
-  if(images[key]||loading[key]||!window.ARTWORK[key])return;
-  const im=new Image();loading[key]=im;im.fetchPriority='high';let attempt=0;
+ function loadImage(src,priority='low'){
+  if(requests.has(src)){const request=requests.get(src);if(priority==='high')request.image.fetchPriority='high';return request.promise}
+  const im=new Image();im.fetchPriority=priority;let attempt=0;
+  const promise=new Promise(resolve=>{
   // Slow downloads must finish; retry only a real network/decode failure.
-  im.onerror=()=>{if(attempt++<2){const url=new URL(window.ARTWORK[key],document.baseURI);url.searchParams.set('retry',attempt);im.src=url.href}else{im.onload=im.onerror=null;delete loading[key]}};
-  im.onload=()=>{images[key]=im;delete loading[key];if(scene===key){build();dispatchEvent(new Event('sceneartload'))}};
-  im.src=window.ARTWORK[key];
+   im.onerror=()=>{if(attempt++<2){const url=new URL(src,document.baseURI);url.searchParams.set('retry',attempt);im.src=url.href}else{im.onload=im.onerror=null;requests.delete(src);resolve(null)}};
+   im.onload=()=>resolve(im);
+  });
+  requests.set(src,{image:im,promise});im.src=src;return promise;
+ }
+ function loadArtwork(key,priority='high'){
+  if(images[key])return Promise.resolve(images[key]);
+  if(!window.ARTWORK[key])return Promise.resolve(null);
+  const request=loadImage(window.ARTWORK[key],priority);
+  if(loading[key])return loading[key];
+  return loading[key]=request.then(im=>{delete loading[key];if(im)images[key]=im;if(scene===key){build();dispatchEvent(new Event('sceneartload'));preloadArtwork()}return im});
+ }
+ function preloadArtwork(){
+  if(preloadStarted)return;preloadStarted=true;
+  const taskArt={orbit:['orbit-console.jpg','orbit-radar.jpg','orbit-wave.jpg'],signal:['signal-console.jpg'],landing:['lander.png'],sample:['sample-surface.jpg'],upload:['circuit-panel.jpg']};
+  const queue=[],seen=new Set();
+  function add(src,key){if(!src||seen.has(src))return;seen.add(src);queue.push(()=>key?loadArtwork(key,'low'):loadImage(src))}
+  // Story order warms nearby scenes, portraits and game art first. Two low-priority
+  // workers limit contention; entering a queued scene promotes its existing request.
+  for(const step of window.STORY||[]){
+   add(window.ARTWORK[step.scene],step.scene);
+   if(step.portrait)add(window.CHARACTERS[step.portrait]);
+   for(const file of taskArt[step.task]||[])add('assets/ui/'+file+'?v=game-art-20261016');
+  }
+  for(const [key,src] of Object.entries(window.ARTWORK))add(src,key);
+  for(const src of Object.values(window.CHARACTERS||{}))add(src);
+  async function worker(){while(queue.length)await queue.shift()()}
+  worker();worker();
  }
  let rng=1;
  function random(){rng=(Math.imul(rng,1664525)+1013904223)>>>0;return rng/4294967296}
