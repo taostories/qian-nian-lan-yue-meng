@@ -88,3 +88,7 @@ body .app{position:relative;z-index:1}
 @keyframes ending-emerge{from{opacity:0;transform:translateY(10px);visibility:hidden}to{opacity:1;transform:translateY(0);visibility:visible}}
 @media(max-width:520px){.app[data-mode=ending] .ending-reveal{margin-bottom:max(38px,env(safe-area-inset-bottom));padding:0 4px}.ending-reveal h2{font-size:30px;letter-spacing:.06em}.ending-reveal .end-line{font-size:18px}.ending-reveal .actions{gap:18px}}
 @media(prefers-reduced-motion:reduce){.ending-reveal h2,.ending-reveal .end-line span,.ending-reveal .actions{opacity:1;transform:none;visibility:visible}}
+
+/* Enlarge the operator above the same dialogue baseline, including the meeting. */
+.character-operator{transform:scale(1.16);transform-origin:left bottom}
+@media(max-width:520px){.character-operator{transform:scale(1.12)}}

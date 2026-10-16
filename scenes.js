@@ -26,20 +26,19 @@
  function preloadArtwork(){
   if(preloadStarted)return;preloadStarted=true;
   const taskArt={orbit:['orbit-console.webp','orbit-radar.webp','orbit-wave.webp'],signal:['signal-console.webp'],landing:['landing-background.webp','lander.webp'],sample:['sample-surface.webp','sample-soil.webp','sample-fragments.webp','sample-core.webp','sample-crater.webp'],upload:['circuit-panel.webp']};
-  const backgrounds=[],details=[],seen=new Set();
-  function add(src,key){if(!src||seen.has(src))return;seen.add(src);(key?backgrounds:details).push(()=>key?loadArtwork(key,'low'):loadImage(src))}
-  // Story order warms nearby scenes, portraits and game art first. Two low-priority
-  // workers limit contention. Backgrounds have their own queue so a large portrait
-  // cannot block later scenes; entering a queued scene promotes its existing request.
+  const backgrounds=[],portraits=[],details=[],seen=new Set();
+  function add(src,key,portrait=false){if(!src||seen.has(src))return;seen.add(src);(key?backgrounds:portrait?portraits:details).push(()=>key?loadArtwork(key,'low'):loadImage(src))}
+  // Separate queues keep portraits and backgrounds from blocking game art.
+  // Two game-art workers warm the small controls and icons in parallel.
   for(const step of window.STORY||[]){
    add(window.ARTWORK[step.scene],step.scene);
-   if(step.portrait)add(window.CHARACTERS[step.portrait]);
+   if(step.portrait)add(window.CHARACTERS[step.portrait],null,true);
    for(const file of taskArt[step.task]||[])add('assets/ui/'+file+'?v=preload-lite-20261016');
   }
   for(const [key,src] of Object.entries(window.ARTWORK))add(src,key);
-  for(const src of Object.values(window.CHARACTERS||{}))add(src);
+  for(const src of Object.values(window.CHARACTERS||{}))add(src,null,true);
   async function worker(queue){while(queue.length)await queue.shift()()}
-  worker(backgrounds);worker(details);
+  worker(backgrounds);worker(portraits);worker(details);worker(details);
  }
  let rng=1;
  function random(){rng=(Math.imul(rng,1664525)+1013904223)>>>0;return rng/4294967296}
