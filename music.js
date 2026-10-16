@@ -3,7 +3,7 @@
  'use strict';
  const button=document.getElementById('sound');
  const tracks={soaring:new Audio('assets/audio/soaring.mp3'),immersed:new Audio('assets/audio/immersed.mp3')};
- let context,master,effects,active=null,wanted='soaring',enabled=false,revision=0;
+ let context,master,effects,active=null,wanted='soaring',enabled=true,revision=0,needsGesture=true;
  const channels={},stops={};
  for(const track of Object.values(tracks)){track.loop=true;track.preload='none'}
  function setup(){
@@ -22,20 +22,20 @@
   if(!enabled||document.hidden)return;
   const ticket=++revision,name=wanted;
   try{
-   setup();await context.resume();
-   if(ticket!==revision||!enabled||document.hidden)return;
+   setup();
    clearTimeout(stops[name]);
-   await tracks[name].play();
+   await Promise.all([context.resume(),tracks[name].play()]);
    if(ticket!==revision||!enabled||document.hidden){if(!enabled||document.hidden||wanted!==name)tracks[name].pause();return}
-   active=name;fade(master.gain,1,.8);
+   needsGesture=false;active=name;fade(master.gain,1,.8);
    for(const [key,gain] of Object.entries(channels)){
     fade(gain.gain,key===name?(key==='soaring'?.22:.27):0,2.5);
     if(key!==name){clearTimeout(stops[key]);stops[key]=setTimeout(()=>{if(active!==key)tracks[key].pause()},2700)}
    }
    // Warm the ending track only after the main music is playing, so art loads first.
    if(name==='soaring'&&tracks.immersed.preload==='none'){tracks.immersed.preload='auto';tracks.immersed.load()}
-  }catch{
+  }catch(error){
    if(ticket!==revision)return;
+   if(error.name==='NotAllowedError'){needsGesture=true;return}
    if(active&&active!==name&&!tracks[active].paused){button.title='结尾音乐暂未载入，点击可关闭音乐';return}
    enabled=false;for(const track of Object.values(tracks))track.pause();updateButton();button.title='音乐暂未载入，点击重试';
   }
@@ -45,6 +45,14 @@
   if(enabled)playWanted();
   else if(context){fade(master.gain,0,.25);const ticket=revision;setTimeout(()=>{if(ticket===revision&&!enabled)for(const t of Object.values(tracks))t.pause()},300)}
  };
+ // Browsers that block audible autoplay unlock it on the first game interaction.
+ function unlockMusic(event){
+  if(!event.isTrusted||event.target.closest?.('#sound')||!enabled||!needsGesture)return;
+  if(event.type==='keydown'&&!['Enter',' '].includes(event.key))return;
+  needsGesture=false;playWanted();
+ }
+ document.addEventListener('click',unlockMusic,true);
+ document.addEventListener('keydown',unlockMusic,true);
  document.addEventListener('visibilitychange',()=>{
   revision++;
   if(document.hidden){for(const t of Object.values(tracks))t.pause();if(context)context.suspend()}
@@ -56,4 +64,5 @@
   get state(){return {enabled,wanted,active,playing:Object.entries(tracks).filter(([,t])=>!t.paused).map(([n])=>n)}}
  };
  updateButton();
+ playWanted();
 })();
