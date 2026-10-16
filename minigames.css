@@ -82,3 +82,14 @@
 .mission .sample-icon{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none;filter:drop-shadow(0 1px 2px #080b1866)}
 .mission .route-cell.collected .sample-icon{opacity:.5}
 .mission .route-cell.rock{background:#10152b18}
+
+/* Small map labels, with a readable visual key beside the sampling grid. */
+.mission .sample-cell-label{position:absolute;right:2px;bottom:2px;padding:1px 3px;border-radius:3px;background:#100d24dc;color:#f3edff;font-size:12px;font-weight:400;line-height:1.2;text-shadow:none;pointer-events:none}
+.mission .sample-guide{padding:12px 14px;border:1px solid #b6a4ee45;border-radius:6px;background:#211a3680;margin-bottom:16px}
+.mission .sample-guide-title{font-size:17px;color:#e9dfff;margin-bottom:8px}
+.mission .sample-targets{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.mission .sample-target{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:16px;color:#ede5fa}
+.mission .sample-target img{width:64px;height:54px;object-fit:contain}
+.mission .sample-obstacle{display:flex;align-items:center;gap:10px;margin-top:12px;padding-top:10px;border-top:1px solid #b6a4ee30;font-size:16px;color:#e0d5ed}
+.mission .sample-obstacle img{width:46px;height:40px;object-fit:contain;flex:none}
+@media(max-width:600px){.mission .sample-cell-label{font-size:10px;right:1px;bottom:1px;padding:1px 2px}.mission .sample-guide{padding:10px 12px;margin-bottom:12px}.mission .sample-target img{width:54px;height:44px}}
