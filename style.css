@@ -32,6 +32,12 @@ body .app{position:relative;z-index:1}
 @media(max-height:600px) and (min-width:521px){.app:not([data-mode=home]) header{height:55px}.app:not([data-mode=home]) main{min-height:calc(100svh - 55px)}.chapter-heading{padding-top:10px}.chapter-heading h2{font-size:23px}.dialogue-panel{margin-top:auto;margin-bottom:12px}.dialogue-panel .narrative{min-height:0;font-size:18px}.task-panel{margin-top:auto;padding:14px 24px}.task-panel>h2{font-size:23px;margin-bottom:10px}.task-panel .scope{height:40px}.task-panel .task-description{font-size:16px}.task-panel .range-label{margin:4px 0}.probe-hotspot{top:34%;height:90px;width:150px}}
 
 /* 首页只保留主标题、旅程按钮与声音开关。 */
+.home-title{width:min(900px,76vw);max-width:100%;line-height:0;margin:0 auto 34px}
+.home-title img{display:block;width:100%;height:auto;filter:drop-shadow(0 3px 12px #100b26aa)}
+.app[data-mode=home] main{min-height:0;align-items:center}
+.home .actions{justify-content:center}
+@media(max-width:800px){.home{padding:0 0 28px}.home-title{width:100%;margin-bottom:30px}}
+@media(max-height:520px) and (min-width:521px){.app[data-mode=home] header{height:60px}.home-title{width:min(68vw,110svh);margin-bottom:18px}}
 .app[data-mode=home] .brand,.app[data-mode=home] #chapter-label,.app[data-mode=home] footer{display:none}
 .app[data-mode=home] header{justify-content:flex-end}
 
