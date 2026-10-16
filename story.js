@@ -364,13 +364,30 @@ window.STORY = [
     "chapter": 3,
     "scene": "finale",
     "speaker": "",
-    "text": "你把地球夜景与月面影像铺在回信里，月光仿佛将信页展开成一片天地。\n在这片由记忆与想象织成的月色里，你终于与嫦娥相见。她站在探测器旁，转身望向你。",
+    "text": "你把地球夜景与月面影像铺进回信。信页展开，儿时故事里的广寒宫阙浮现在月光中。\n一道光从宫门延伸到探测器旁，像一条等了很久才接通的路。",
+    "portrait": null
+  },
+  {
+    "id": "palace-to-moon",
+    "chapter": 3,
+    "scene": "finale",
+    "speaker": "",
+    "text": "嫦娥走出宫门。随着她向前，身后的宫阙与桂影渐渐化作月光，脚下显露出岩石、月壤和探测器留下的印痕。\n回信把传说中的月宫与今日抵达的月面，连在了一起。",
+    "portrait": null
+  },
+  {
+    "id": "meeting-arrival",
+    "chapter": 3,
+    "scene": "finale",
+    "speaker": "",
+    "text": "她在探测器旁停下，衣袖垂落，眉目清晰。你也沿着展开的信页走到她面前。\n这一次，你们之间没有遥远的呼唤，只有相见时短暂的安静。",
     "portrait": null,
     "portraits": [
       "operator",
       "change"
     ],
-    "meeting": true
+    "meeting": true,
+    "portraitStyle": "solid"
   },
   {
     "id": "meeting-startle",
@@ -383,7 +400,8 @@ window.STORY = [
       "operator",
       "change"
     ],
-    "meeting": true
+    "meeting": true,
+    "portraitStyle": "solid"
   },
   {
     "id": "meeting-recognition",
@@ -396,20 +414,22 @@ window.STORY = [
       "operator",
       "change"
     ],
-    "meeting": true
+    "meeting": true,
+    "portraitStyle": "solid"
   },
   {
     "id": "meeting-greeting",
     "chapter": 3,
     "scene": "finale",
     "speaker": "嫦娥",
-    "text": "是我。还记得你答应过，要带我看看今天的人间吗？",
+    "text": "是我。那天，我还隔着月光听你说话。\n今天路通了，我便沿着你们留下的足迹，走来见你。",
     "portrait": "change",
     "portraits": [
       "operator",
       "change"
     ],
-    "meeting": true
+    "meeting": true,
+    "portraitStyle": "solid"
   },
   {
     "id": "meeting-introduction",
@@ -422,7 +442,8 @@ window.STORY = [
       "operator",
       "change"
     ],
-    "meeting": true
+    "meeting": true,
+    "portraitStyle": "solid"
   },
   {
     "id": "lights-answer",
@@ -435,7 +456,8 @@ window.STORY = [
       "operator",
       "change"
     ],
-    "meeting": true
+    "meeting": true,
+    "portraitStyle": "solid"
   },
   {
     "id": "meeting-those-who-wait",
@@ -448,7 +470,8 @@ window.STORY = [
       "operator",
       "change"
     ],
-    "meeting": true
+    "meeting": true,
+    "portraitStyle": "solid"
   },
   {
     "id": "meeting-many-hands",
@@ -461,7 +484,8 @@ window.STORY = [
       "operator",
       "change"
     ],
-    "meeting": true
+    "meeting": true,
+    "portraitStyle": "solid"
   },
   {
     "id": "moon-received",
@@ -470,7 +494,7 @@ window.STORY = [
     "speaker": "嫦娥",
     "text": "从前，人们把走不到的远方，托付给我的故事。\n如今，你们把路一步步走出来了。我等来的，原来是这样的相逢。",
     "portrait": "change",
-    "portraitStyle": "apparition",
+    "portraitStyle": "solid",
     "portraits": [
       "operator",
       "change"
@@ -488,7 +512,8 @@ window.STORY = [
       "operator",
       "change"
     ],
-    "meeting": true
+    "meeting": true,
+    "portraitStyle": "solid"
   },
   {
     "id": "closing",
@@ -501,7 +526,8 @@ window.STORY = [
       "operator",
       "change"
     ],
-    "meeting": true
+    "meeting": true,
+    "portraitStyle": "solid"
   },
   {
     "id": "finale",
