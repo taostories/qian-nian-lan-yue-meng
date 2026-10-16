@@ -72,7 +72,8 @@ body .app{position:relative;z-index:1}
 .meeting-portraits .character-portrait{margin:0;max-width:48%;height:100%;object-position:center bottom}
 .meeting-portraits .character-operator{object-position:left bottom}
 .meeting-portraits .character-change{opacity:1}
-.meeting-portraits .is-speaking{filter:drop-shadow(0 0 16px #c8c2ff70)}
+.meeting-portraits .portrait-placeholder{visibility:hidden;pointer-events:none}
+.meeting-portraits .is-speaking{filter:drop-shadow(0 5px 12px #100b2440)}
 @media(max-width:520px){.meeting-portraits{height:260px;gap:8px}.meeting-portraits .character-portrait{width:50%;max-width:50%;height:100%}}
 @media(max-height:600px) and (min-width:521px){.meeting-portraits{height:220px}}
 
@@ -102,11 +103,11 @@ body .app{position:relative;z-index:1}
 @media(prefers-reduced-motion:reduce){.ending-reveal h2,.ending-reveal .end-line span,.ending-reveal .actions{opacity:1;transform:none;visibility:visible}}
 
 /* Keep the larger operator's head at the original height; crop the lower body at the dialogue. */
-.character-operator{transform:scale(1.16);transform-origin:left top;clip-path:inset(0 0 13.7931% 0)}
+.character-operator{transform:scale(1.28);transform-origin:left top;clip-path:inset(0 0 21.875% 0)}
 .meeting-portraits{overflow:hidden}
 .meeting-portraits .character-operator{clip-path:none}
 @media(max-width:520px){
- .character-operator{transform:scale(1.12);clip-path:inset(0 0 10.7143% 0)}
+ .character-operator{transform:scale(1.23);clip-path:inset(0 0 18.6992% 0)}
  /* Chang'e fits the half-width slot; align the operator with her actual image top. */
- .meeting-portraits .character-operator{transform:translateY(max(0px,calc(100% - 55.1724vw))) scale(1.12)}
+ .meeting-portraits .character-operator{transform:translateY(max(0px,calc(100% - 55.1724vw))) scale(1.23)}
 }
