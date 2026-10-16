@@ -7,10 +7,11 @@
  function paintBackground(){ctx.clearRect(0,0,W,H);ctx.drawImage(background,0,0,W,H)}
  function loadArtwork(key){
   if(images[key]||loading[key]||!window.ARTWORK[key])return;
-  const im=new Image();loading[key]=im;im.fetchPriority='high';let attempt=0,timer;
-  const retry=()=>{clearTimeout(timer);if(attempt++<2){im.src=window.ARTWORK[key].split('?')[0]+'?retry='+attempt;timer=setTimeout(retry,15000)}else{im.onload=im.onerror=null;delete loading[key]}};
-  im.onload=()=>{clearTimeout(timer);images[key]=im;delete loading[key];if(scene===key){build();dispatchEvent(new Event('sceneartload'))}};
-  im.onerror=retry;im.src=window.ARTWORK[key];timer=setTimeout(retry,15000);
+  const im=new Image();loading[key]=im;im.fetchPriority='high';let attempt=0;
+  // Slow downloads must finish; retry only a real network/decode failure.
+  im.onerror=()=>{if(attempt++<2){const url=new URL(window.ARTWORK[key],document.baseURI);url.searchParams.set('retry',attempt);im.src=url.href}else{im.onload=im.onerror=null;delete loading[key]}};
+  im.onload=()=>{images[key]=im;delete loading[key];if(scene===key){build();dispatchEvent(new Event('sceneartload'))}};
+  im.src=window.ARTWORK[key];
  }
  let rng=1;
  function random(){rng=(Math.imul(rng,1664525)+1013904223)>>>0;return rng/4294967296}

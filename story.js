@@ -1,7 +1,7 @@
-/* 六张整屏原画的唯一入口。将对应 JPG 放入 assets 即可自动替换程序场景。 */
+/* 整屏背景使用压缩 WebP；同名 JPG 原画保留在 assets。 */
 window.ARTWORK = {
-  cover:'assets/00-cover.jpg?v=game-art-20261016', ancient:'assets/01-ancient.jpg?v=game-art-20261016', palace:'assets/02-palace.jpg?v=game-art-20261016', palaceEmpty:'assets/02-palace-empty.jpg?v=game-art-20261016', control:'assets/03-control.jpg?v=game-art-20261016',
-  cosmos:'assets/04-cosmos.jpg?v=game-art-20261016', surface:'assets/05-surface.jpg?v=game-art-20261016', finale:'assets/06-finale.jpg?v=game-art-20261016'
+  cover:'assets/00-cover.webp?v=art-webp-20261016', ancient:'assets/01-ancient.webp?v=art-webp-20261016', palace:'assets/02-palace.webp?v=art-webp-20261016', palaceEmpty:'assets/02-palace-empty.webp?v=art-webp-20261016', control:'assets/03-control.webp?v=art-webp-20261016',
+  cosmos:'assets/04-cosmos.webp?v=art-webp-20261016', surface:'assets/05-surface.webp?v=art-webp-20261016', finale:'assets/06-finale.webp?v=art-webp-20261016'
 };
 window.CHARACTERS = {operator:'assets/characters/operator.png?v=game-art-20261016',change:'assets/characters/change.png?v=game-art-20261016'};
 window.CHAPTERS = ['月下的故事','地面的守候','走近真实的月亮','写给人间的回信'];
